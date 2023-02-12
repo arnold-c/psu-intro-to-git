@@ -1,0 +1,23 @@
+# Welcome, and what this book is about {.unnumbered}
+
+This book accompanies the Center for Infectious Disease Dynamics short workshop on using Git and GitHub as researchers.
+The content will mirror much of the workshop's syllabus, and act as a reference for attendees (and others), although I would highly recommend reading through the excellent book https://happygitwithr.com by Jenny Bryan and co.
+
+## Pre-requisites
+
+There are some pre-requisite tasks to get set up ahead of the workshop.
+
+1. What are git and GitHub, and why do I care?
+2. How to install Git
+3. Setting up a GitHub account
+4. Connecting GitHub to my machine
+
+## TOC
+
+After getting setup, the workshop will cover the following sections:
+
+1. An overview of how git works
+2. Making your first git repository
+3. Git mechanics - how to actually use git
+4. Git branching
+5. Recommended practices

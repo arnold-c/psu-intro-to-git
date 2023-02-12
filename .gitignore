@@ -1,0 +1,4 @@
+.quarto/*
+*.html
+_book/site_libs/*
+_book/search.json

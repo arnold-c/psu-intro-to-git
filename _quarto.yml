@@ -1,0 +1,23 @@
+project:
+  type: book
+
+book:
+  title: "Intro to Git and GitHub"
+  subtitle: "PSU Center for Infectious Disease Dynamics Workshop"
+  author: "Callum Arnold"
+  date: today
+  chapters:
+    - index.qmd
+    - prereqs.qmd
+    - references.qmd
+
+bibliography: references.bib
+
+format:
+  html:
+    theme: cosmo
+  pdf:
+    documentclass: scrreprt
+
+
+
