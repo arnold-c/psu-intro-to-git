@@ -9,6 +9,13 @@ book:
   chapters:
     - index.qmd
     - prereqs.qmd
+    - part: "Working with Git"
+      chapters:
+        - how-git-works.qmd
+        - making-your-first-repo.qmd
+        - git-mechanics.qmd
+        - branching-strategies.qmd
+        - recommended-practices.qmd
     - references.qmd
 
 bibliography: references.bib
