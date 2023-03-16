@@ -70,12 +70,14 @@ You could also install git using [Chocolatey](https://chocolatey.org), as this w
 
 Now that you have Git running, you need to tell it who you are.
 This allows multiple people to make changes to code, and the correct names will be attached to the changes.
+We will also make sure that all git repositories use the default branch name `main`.
 
 Open up the Git Bash or the terminal and enter
 
 ```
 git config --global user.name 'Firstname Lastname'
 git config --global user.email 'my_email@domain.com'
+git config --global init.defaultBranch main
 ```
 
 Typing in `git config --global --list` is a way to check that your details have been saved correctly.
