@@ -58,7 +58,7 @@ If you want to explore using Windows Subsystem for Linux (WSL), then go for it a
 1. Install [Git for Windows](https://gitforwindows.org/)
     - This gives you Git Bash, which is a much nicer way of interfacing with Git than the command line.
     - **Note:** when asked about "*Adjusting your PATH environment*", be sure to select "*Git from the command line and also from 3rd-party software*". The other default options should be fine. For more details about the installation settings, please click [here](https://github.com/jennybc/happy-git-with-r/issues/105)
-2. Open up Git Bash and enter `where git`. Open up the command line and enter `where git`. Depending on whether you have administrator privileges, the outputs should look something like this, respectively
+2. Open up Git Bash and enter `which git`, or open up the command prompt and enter `where git`. Depending on whether you have administrator privileges, the outputs should look something like this, respectively
     1. `which git` : `/mingw64/bin/git`
     2. `where git` : `C:\Users\owner\AppData\Local\Programs\git\bin\git.exe` (User privileges)
         1. `where git` : `C:\Program Files\git\bin\git.exe` (administrator privileges)
