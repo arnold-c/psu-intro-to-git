@@ -1,1 +1,125 @@
 # Making Your First Git Repo
+
+In general, there are two ways to make a git repo.
+You can start with a local repo and push it to GitHub, or you can start with a GitHub repo and clone it to your local machine.
+If you don't have any existing code, it's marginally easier to start with GitHub, which is why we'll start with this workflow.
+But no problem if you have code on your local machine - you just need to follow slightly different steps to connect the two.
+You will have to make the exact same decisions about repository structure, regardless of the workflow you use, so it's worth reading through the [GitHub First](#github-first) section as we'll go into the most detail here.
+
+## GitHub First
+### Creating the Repository
+
+Log in to your GitHub account.
+From here, setting up a new repository is quick and simple - just click on the `+` button in the top right corner and then select "New repository".
+
+![](figs/GitHub-new-repo_create-01.png)
+
+From here, you're off to the races.
+You'll be presented with the following options, that we'll go through one-by-one.
+
+![](figs/GitHub-new-repo_create-02.png){#creating-github-repo}
+
+### Repository Name
+
+When choosing a repository name, you'll want something short, memorable, and descriptive of the project that you're working on.
+Ideally, you should follow Jenny Bryan's excellent guidelines when it comes to file and repository naming (after all, a repository is just a project folder), but as an overview:
+
+- Use `-` to separate words
+- Use `_` to separate metadata (e.g. dates from script description)
+- Try to be consistent in how you use case e.g., `CamelCase` vs `camelCase` vs `snake_case` vs `everythingmashedtogether`
+
+For example, the repository for this workshop book is `psu-into-to-git`.
+I'd highly recommend skimming [these slides](https://speakerdeck.com/jennybc/how-to-name-files?slide=2) to learn more and save you some hassle in your digital life.
+
+### Description
+
+The description is an optional part of the setup, but is worth completing.
+In a few short words, you should describe what you're trying to do with the project.
+For example, the description for this project is:
+
+![](figs/GitHub-new-repo_description.png)
+
+### Public vs Private
+
+Obviously this is a personal decision, but one of the benefits of learning and using git is that it facilitates collaboration.
+While not all code can be open-sourced for legal, ethical, or other reasons, if you can, I would encourage you to try and publish the code as a "Public" repository.
+Not only is it in keeping with the principles of open and collaborative science, particularly when it comes to peer-review, but you also might get helpful feedback on your work from interested parties.
+If you've done something great that you want to share with the world, say, you've developed an awesome package or method of analyzing your data, it's cool if people can build off your work.
+But from a personal perspective, members of the community can, and often will, help you improve your code and move it forwards, giving it robustness and allowing you to do new things that you hadn't thought of.
+You can always change the visibility of the repo later by going to the "Danger Zone > Visibility" option at the bottom of the "Settings > General" page.
+
+### README
+
+The `README.md` acts as the landing page to your repository.
+You don't need it, but each repository should have one.
+The point of the README is to tell the reader what the repository is all about.
+As hinted by the file extension, the `README.md` is a markdown file.
+Markdown is very simple to use - you just type and let your syntax take care of the formatting.
+See [this document from GitHub](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax) for an overview of how to use markdown.
+
+At a minimum, start with these few items:
+
+- Repository title
+- About this project
+    - Give a short (paragraph) overview of the project and what you hope to achieve with the work
+- Repository structure
+    - Tell the reader about the layout of the repository
+        - What are your folder names, and what is contained in each folder
+        - What do the key files do e.g. I have a file in one of my projects called `student_missing-data-analysis.Rmd` with the description "notebook that explore the missingness present in the data as a whole, but particularly among students with PSU samples. It examines the effects of imputation on the GLM ORs"
+- Built with
+    - What are the key packages that you used in the project?
+        - I often use the [`{targets}` package](https://books.ropensci.org/targets/) for automating R analysis pipelines and [`{renv}` package](https://rstudio.github.io/renv/) for R package management
+- Getting started
+    - How to download the repository and get set up to run the analysis
+    - Include the cloning commands
+    - Tell the reader what packages to install, and how (some packages you use may not be standard and you may need to use special instructions e.g., JAGS often requires installation from SourceForge)
+- Usage
+    - Tell the reader how to re-run your analysis
+    - Hopefully this will be fairly simple if you clearly describe your repository structure above
+    - Because I often use `{targets}` when I'm working in R, I like to add a quick description about how to use `{targets}`, specifically that it is based around the [functional programming concept](https://adv-r.hadley.nz/fp.html), so it is a little unfamiliar to people used to writing and using scripts
+- License
+    - This can be a link to your `LICENSE.txt` file
+    - It is particularly important if your code is public-facing
+- Contact
+- Acknowledgements
+
+### .gitignore
+
+The `.gitignore` file is a special "dot" file that stays in your project root and tells git to not track a file, or a group of files if you specify a folder or use the `*` wildcard.
+For example, we often do not want to html files as they are typically the outputs of our analysis e.g., rendered notebooks that we want to look at and share with collaborators.
+To exclude all html files, we simply add `*.html` to the `.gitignore`, and html files will stop being tracked.
+To exclude a folder, we would add `my-folder/` to the `.gitignore`.
+
+If you have multiple files with the same name, but in different folders within the project, e.g. `folder01/eda.Rmd` and `folder02/eda.Rmd`, you may only want to ignore one of them.
+In this situation, you should specify the path i.e., `folder02/eda.Rmd`.
+If you just add `eda.Rmd` to `.gitignore`, both files will be ignored.
+
+As you can see in the [setup image](#creating-github-repo), GitHub provides optional templates for the `.gitignore`.
+It's worth taking advantage of this and using the one for your language of choice e.g., R, python, Julia etc.
+It will provide you with a good starting point that you can customize as necessary.
+
+**Important to note - `.gitignore` will not remove files from the git history.**
+
+To do this, you would have to very carefully `cherry pick` and change past `commits`, particularly if you have already `pushed` your local changes to GitHub, and that is far beyond the scope of this workshop.
+So it's better to preemptively exclude a file or file type from git tracking if you think you might not want it in the git history later on e.g. put all sensitive data and outputs into folders that are ignored by git.
+
+### License
+
+Most people place their license in a `/LICENSE.txt` file and a state what license type you want to use e.g., MIT.
+Then in the `README.md`, you can just type in the location of the license e.g., `/LICENSE.txt`, and it will provide a link that readers can click on for the full details.
+You can use [this helpful website](https://choosealicense.com) to decide what license is appropriate for you and your project.
+
+### Repository Template
+
+Despite being first in the list, I've left this to the end for a reason.
+Firstly, when you get started with Git and GitHub, you won't have anything set up to use as a template.
+Secondly, it's important to understand how to use GitHub before you try and automate away the set up tedium.
+
+Now we've got that out of the way, after you've created a repository with a structure you like (e.g., it has all of the components stated [above](#readme)), you can turn that into a template you can use for your next repository.
+To do so is very easy.
+Simply go to "Settings > General" and click on the "Template repository" button under your repository name.
+
+![](/figs/GitHub-new-repo_template.png)
+
+The next time you go to create a repository, your previous repo will show up in the templates drop-down for you to use and then edit.
+If you felt so inclined, you could even create a separate repository that is only for your template, so you don't have to go through and delete parts of the `README.md`.
