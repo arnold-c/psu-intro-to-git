@@ -1,12 +1,19 @@
 # Making Your First Git Repo
 
 In general, there are two ways to make a git repo.
-You can start with a local repo and push it to GitHub, or you can start with a GitHub repo and clone it to your local machine.
+You can start with a local repo and `push` it to GitHub, or you can start with a GitHub repo and `clone` it to your local machine.
 If you don't have any existing code, it's marginally easier to start with GitHub, which is why we'll start with this workflow.
 But no problem if you have code on your local machine - you just need to follow slightly different steps to connect the two.
 You will have to make the exact same decisions about repository structure, regardless of the workflow you use, so it's worth reading through the [GitHub First](#github-first) section as we'll go into the most detail here.
 
 ## GitHub First
+
+If you have the GitKraken client installed, and it is connected to your GitHub account, you can create a new repository on GitHub directly in the GitKraken client, and it takes care of cloning the remote repository directly to your local machine (e.g., [the cloning section](#cloning-to-your-local-computer)).
+This makes the set up a little bit easier, as you don't have to use your browser or clone the repository.
+Otherwise, it works through exactly the same steps as the browser-based workflow, which I'll walk through below in case you do not have GitKraken.
+
+![Pressing `cmd+I`/`ctrl+I` brings up the "Init" window](figs/GitHub-new-repo_gitkraken-github-init.png)
+
 ### Creating the Repository
 
 Log in to your GitHub account.
@@ -46,6 +53,7 @@ While not all code can be open-sourced for legal, ethical, or other reasons, if 
 Not only is it in keeping with the principles of open and collaborative science, particularly when it comes to peer-review, but you also might get helpful feedback on your work from interested parties.
 If you've done something great that you want to share with the world, say, you've developed an awesome package or method of analyzing your data, it's cool if people can build off your work.
 But from a personal perspective, members of the community can, and often will, help you improve your code and move it forwards, giving it robustness and allowing you to do new things that you hadn't thought of.
+
 You can always change the visibility of the repo later by going to the "Danger Zone > Visibility" option at the bottom of the "Settings > General" page.
 
 ### README
@@ -123,3 +131,108 @@ Simply go to "Settings > General" and click on the "Template repository" button 
 
 The next time you go to create a repository, your previous repo will show up in the templates drop-down for you to use and then edit.
 If you felt so inclined, you could even create a separate repository that is only for your template, so you don't have to go through and delete parts of the `README.md`.
+
+### Cloning to Your Local Computer
+
+Now comes the fun part - getting your project set up on your computer where you can do your work.
+Thankfully, GitHub makes this incredibly easy to do, particularly if you have a git client like GitKraken installed.
+
+The first thing you need to do is create a local folder to `clone` your repository to.
+I like to have all of my repositories, work or otherwise, in one location on my computer, making it easy to find and switch between them.
+For example, I keep my repositories in `~/Documents/Repos/`, therefore the repository for this project is at `~/Documents/Repos/psu-intro-to-git`.
+Note that `~/` just means `/users/username/` on MacOS, which would translate to `/home/` on Linux, and `C:\Users\username\` on Windows. 
+
+It's not necessary to choose a directory name as the repository name on GitHub, but it's good practice and helps minimize confusion.
+
+If you have a git client, you can open it up, and assuming that it is connected to GitHub, there should be a "Clone button" you can click on.
+If you use GitKraken, pressing `cmd+N`/`ctrl+N` should bring up the clone window that looks like this below.
+
+![](figs/GitHub-new-repo_gitkraken-clone.png)
+
+If you have connected GitKraken to GitHub, you can search through your GitHub repositories, otherwise you can paste in the HTTPS or SSH urls in the "Clone with URL" section.
+
+To find your HTTPS/SSH urls, navigate to the repository, and click on the `< > Code` button, before selecting either HTTPS or SSH, depending on your [initial GitHub setup](./prereqs.qmd#linking-git-to-github).
+These urls have a consistent pattern, so you don't always have to go to GitHub to find them.
+
+For HTTPS, they are `https://github.com/GITHUB_USERNAME/REPOSITORY_NAME.git`.
+
+For SSH, they are `git@github.com:GITHUB_USERNAME/REPOSITORY_NAME.git`.
+
+![](figs/GitHub-new-repo_clone-urls.png)
+
+If you do not have a git client, navigate to the directory where you would like to keep your repositories; for me, this is `~/Documents/Repos/`.
+Then open up the terminal/Git Bash command line in this location.
+From here you have two options.
+
+1. Create a folder for your repository (ideally use the same or a very similar name to the one on GitHub) and use the terminal command `git clone git@github.com:GITHUB_USERNAME/REPOSITORY_NAME.git .` (if you are using [SSH](./prereqs.qmd#linking-git-to-github)) from within this folder to clone the contents of the GitHub repository into this folder.
+2. Enter the command `git clone git@github.com:GITHUB_USERNAME/REPOSITORY_NAME.git` (if you are using [SSH](./prereqs.qmd#linking-git-to-github)) to create and clone the repository into `~/Documents/Repos/REPOSITORY_NAME` (note the lack of the `.` at the end of the command)
+
+That's it, you're ready to start using git!
+
+## Local First
+
+Sometimes you already have code on your computer that you want to turn into a git project.
+As mentioned, this is a pretty easy problem to solve.
+You will still need to go through the same repository structure steps and decisions as above, so I recommend [going back](#github-first) if you've just skipped ahead to here, but assuming you've already covered that material, the first thing you need to do is turn your local repository into a git repository.
+
+### Git Client
+
+If you have a git client installed, such as GitKraken, it's not too hard to turn an existing directory into a git repository, before `pushing` to GitHub.
+First, open GitKraken and enter `cmd+I`/`ctrl+I` to open up the "Init" window.
+From here, navigate to "Local Only", which tells GitKraken that you want to turn a directory local to your computer into a git repository.
+Ensure that your "Initalize in" Path is in the correct parent directory (for me, I keep my repositories in `~/Documents/Repos`).
+Now just enter the name of the directory you would like to turn into the repository and click "Create Repository".
+
+![](figs/GitHub-new-repo_local-gitkraken-init.png)
+
+This will not overwrite your file, just add the necessary git components and add the `.gitignore`, `LICENSE.md` (if selected), and a blank `README.md` (if you haven't already created one) as your first `commit`.
+All other files will be `added` (i.e., `git add .`), ready to be `staged` and `committed`, though we'll explain what this means in more detail shortly.
+
+From here, you need to connect your local repository to GitHub.
+In GitKraken, open up the repository (if it didn't open automatically after creating), and click on the sidebar button labelled "REMOTE".
+
+![](figs/GitHub-new-repo_local-gitkraken-connect-remote.png)
+
+From here:
+
+- Select GitHub
+- Choose your account (assuming you have linked GitKraken with GitHub)
+- Choose the repository name you'd like for GitHub (I'd recommend the default, which is your local repository's name)
+- Add a [quick description](#description)
+- Select the level of [visibility](#public-vs-private) you would like
+- **Note:** I would leave "Remote Name" as `origin` as lots of standard commands refer to `origin`, so it'll make your life easier if you have to troubleshoot things later on in your git adventures
+
+And that's it.
+
+### No Git Client
+
+Firstly, go [install a git client](./prereqs.qmd#installing-a-git-client) if you are learning git - you'll save yourself a lot of time and heartache when it comes to the day-to-day of using git.
+But if you're insistent that you need to use the command line at this stage, or just are interested in understanding what commands your GUI is performing, carry on reading.
+
+From here, your code will vary slightly depending on whether you set up git using [SSH or PAT token](./prereqs.qmd#linking-git-to-github), but the structure is generally the same.
+If you already have code, you can ignore `echo ...` in step 2 as you have files git can track (though you should add a README.md!), and replace `README.md` with the file(s) you wish to track.
+
+1. Open a terminal/Git Bash command line in your directory
+    - All the following commands should be entered in the terminal from within the directory
+2. You will need to turn your local directory into a git-tracked repository
+    - Git will not track a completely empty directory, so you need to first add a file
+    - `echo # PROJECT_NAME > README.md`
+    - `git init`
+3. `add` and `commit` the `README.md` file to the git history so you have something to `push` to GitHub
+    - `git add README.md`
+        - Use `git add .` to track all the files in a repository with changes e.g. if you have existing code in a folder that you are converting into a git repository
+    - `git commit -m "Initialize project with README"`
+4. Rename your default branch to `main`
+    - `git branch -M main`
+5. Connect your local repository to your GitHub repository
+    - For PAT token setup
+        - `git remote add origin https://github.com/arnold-c/psu-intro-to-git.git`
+    - For SSH setup
+        - `git remote add origin git@github.com:arnold-c/psu-intro-to-git.git`
+6. `push` your `commit` to GitHub
+    - `git push -u origin main`
+7. Navigate to GitHub, and edit the [visibility](#public-vs-private) of the repository if desired
+    - By default, GitHub will publish the repository as public access
+
+If you already have a git repository on your local computer, but for some reason haven't connected it to a remote (e.g, GitHub) you can do so by following commands 4-7 inclusively.
+
