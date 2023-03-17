@@ -3,7 +3,7 @@
 In this section, we'll put together the basic Git workflow, and show how all these many terms and commands actually fit together.
 We'll start completely from scratch, and work our way up to a full-fledged Git repository.
 I find that this is the best way to learn anything is to actually do it on a real project, as it's hard to conceptualize what's going on when you're just reading about it, or even working through a toy example.
-And because we research infectious diseases in CIDD, we'll build up a repository that contains a notebook for an SIR model (Susceptible-Infected-Recovered), and do it in both Python and R as that should allow most people to follow along with the code in a language they're familiar with.
+And because we research infectious diseases in CIDD, we'll build up a repository that contains a notebook for an SIR model (Susceptible-Infected-Removed), and do it in both Python and R as that should allow most people to follow along with the code in a language they're familiar with.
 
 ## Creating a New Repository
 
@@ -21,4 +21,66 @@ So, in summary:
     - Make sure the clone path is set to the folder you created in step 1
 6. Click "Clone" and wait for the repository to be cloned to your computer
 
-The repo should now be cloned to your computer, and you should be able to see it in the "Local" section of GitKraken, which you can access using `cmd+O`/`ctrl+O`.
+The repo should now be cloned to your computer, and you should be able to see it in the "Open a repo" section of GitKraken, which you can access using `cmd+O`/`ctrl+O`.
+
+## Giving Our Repository Some Structure
+
+Now that we have a repository, we need to give it some structure.
+We'll start by fleshing out the README, which will act as a guide for how we want to structure our repository.
+This is a good practice to get into as it will help you think carefully about how you want to organize your code, and will help you and others understand what's going on in your repository, as it's easy to skip this step and end up with a repository that's hard to decipher.
+
+Let's first add the core components to the README.
+
+```markdown
+## Repository title
+### About this project
+
+### Repository structure
+
+### Built with
+
+### Getting started
+
+### Usage
+
+### License
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details
+
+### Contact
+
+### Acknowledgements
+```
+
+> **Note:** The `##` and `###` are used to denote different levels of headings in Markdown.
+I prefer to use a level-2 heading for the title of the repository, and level-3 headings for the different sections, as I find it makes the README easier to read; level-1 headings are quite large.
+
+Our project is going to contain an SIR model with births and deaths, which is a simple model of infectious disease transmission.
+The SIR model is a compartmental model, which means that it divides the population into different compartments (Susceptibles, Infected, and Removed), and tracks how people move between these compartments.
+Not everyone is familiar with this, so we'll probably want to include this information in the README.
+Similarly, we'll likely want to include the basic differential equations that govern the model, and the parameters that we'll use to run the model (as well as a short description of what they mean).
+As we're going to use some code from Ottar's Epidemics book (chapter 2), we'll also want to include a link to the book (and citation).
+To add this to a README.md file, we can use the following syntax:
+
+````markdown
+```math
+\begin{align}
+\frac{dS}{dt} &= \mu (N - S) -\beta S \frac{I}{N} \\
+\frac{dI}{dt} &= \beta S \frac{I}{N} - \gamma I - \mu I \\
+\frac{dR}{dt} &= \gamma I - \mu R
+\end{align}
+```
+
+```math
+\begin{align}
+\mu &= \frac{1}{50*52} \\
+\beta &= 2 \\
+\gamma &= \frac{1}{2} \\\\
+
+N &= 1000 \\
+S\_0 &= 999.0 \\
+I\_0 &= 1.0 \\
+R\_0 &= 0.0
+\end{align}
+```
+````
+
