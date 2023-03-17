@@ -55,7 +55,40 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 > **Note:** The `##` and `###` are used to denote different levels of headings in Markdown.
 I prefer to use a level-2 heading for the title of the repository, and level-3 headings for the different sections, as I find it makes the README easier to read; level-1 headings are quite large.
 
-Now lets rename the "Repository Title", and we can start to fill in a few of the sections.
+Now, rename the "Repository Title", and this is a good spot to create our first `commit` before we start to fill in a few of the sections.
+
+### Creating The First Commit
+
+At this stage, we have a repository with a README, but we haven't actually saved any changes to the repository as far as git is concerned.
+When we cloned our repository, the `README.md` only contained the text that GitHub added by default (the repo name and short description - you can check this on GitHub if you'd like).
+If you open up GitKraken, you'll see that it is showing that we have made changes to a file, indicated by the pencil icon in the commit history section, as well as the note above the commit message box that says "1 file change in working directory".
+
+![](figs/Basic-workflow_first-commit-changes01.png)
+
+Clicking on either of these sections will present you will the below window, which shows you the changes that have been made to the file.
+You will also notice that the changes are `unstaged`, which means they will not be included in the next commit.
+
+![](figs/Basic-workflow_first-commit-changes02.png)
+
+Clicking on the `README.md` file will open up the file `diff` in the GitKraken editor, and you can see that the changes are highlighted in green (for additions) and red (for deletions).
+Once we are happy with the changes, we can `stage` them and write the `commit` message.
+The `commit` message title should be short and descriptive, and the body should contain more details about the changes that were made, if necessary for clarity.
+
+![](figs/Basic-workflow_first-commit-changes03.png)
+
+> **Note:** Your `diff` view may look different than mine shown here e.g., it may default to lines being shown above each other, rather than side-by-side.
+You can change this if you would like, by clicking on the buttons in the top-right corner of the editor window, just below the button that says "Unstage File".
+
+Now that we've made our first `commit`, we will see that the pencil icon has disappeared and we have a similar view to what we started with when we cloned the repository.
+The key difference is now there are two `main` branches being shown in the git history.
+The one with the computer that is highlighted is the `local` branch, which is the branch that is stored on our computer.
+The other branch is the `remote` branch, which is the branch that is stored on GitHub.
+Because we've just made a commit, the `local` branch is ahead of the `remote` branch by one commit as we haven't pushed our changes to GitHub yet.
+We'll do that later after we've added a few more things to the README.
+
+![](figs/Basic-workflow_first-commit-changes04.png)
+
+So for now, let's continue to flesh out the README.
 
 ### About This Project
 
@@ -132,3 +165,4 @@ If you want to do it semi-manually, you can just use [this website](https://tree
 ### Contact and Acknowledgements
 
 These are pretty self-explanatory, and easy to fill in now.
+
