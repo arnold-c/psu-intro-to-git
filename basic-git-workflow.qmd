@@ -128,3 +128,7 @@ It's quite nice to include an ASCII tree to visualize the structure of the repos
 If you use VSCode, you can install the [ASCII Tree Generator](https://marketplace.visualstudio.com/items?itemName=aprilandjan.ascii-tree-generator) extension, which will allow you to right-click on a folder and select "Generate Tree String" to generate a tree for that folder.
 If you use R with RStudio, you can use the `fs::dir_tree()` function from the [{fs} package](https://fs.r-lib.org).
 If you want to do it semi-manually, you can just use [this website](https://tree.nathanfriend.io/?s=(%27options!(%27fancy!true~fullPath!false~trailingSlash!true~rootDot!false)~5(%275%27Edit%20me%20to%20generate4a0nic6tre6*diagram%27%3A3*%3A%7D4Use%20indentation0to%20indicat6fil6and3folder3nesting.02You%20can%20even32us6*2markdown3*2bullets%27%3A%27)~version!%271%27)*%20%2004*2-%2030*4%5Cn*5source!6e3%01654320*).
+
+### Contact and Acknowledgements
+
+These are pretty self-explanatory, and easy to fill in now.
