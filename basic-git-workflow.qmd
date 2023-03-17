@@ -1,0 +1,24 @@
+# Basic Git Workflow
+
+In this section, we'll put together the basic Git workflow, and show how all these many terms and commands actually fit together.
+We'll start completely from scratch, and work our way up to a full-fledged Git repository.
+I find that this is the best way to learn anything is to actually do it on a real project, as it's hard to conceptualize what's going on when you're just reading about it, or even working through a toy example.
+And because we research infectious diseases in CIDD, we'll build up a repository that contains a notebook for an SIR model (Susceptible-Infected-Recovered), and do it in both Python and R as that should allow most people to follow along with the code in a language they're familiar with.
+
+## Creating a New Repository
+
+We'll create a new repository on GitHub, and then clone it to our local machine.
+We'll follow the steps outlined in the [GitHub First section](making-your-first-repo.qmd#github-first).
+So, in summary:
+
+1. On your computer, decide where you want to store all your git repositories, and create a folder for them
+    - Mine has the path `~/Documents/Repos/`, but you can put it wherever you want
+2. Create a new repository on GitHub, and name it `sir-model`
+    - Make sure you inialize it with a README, Description, R/Python `.gitignore` template (depending on the language you'd like to follow along with), and an MIT license
+3. Open GitKraken
+4. Open the "Clone" window using `cmd+N`/`ctrl+N`
+5. Click on the "GitHub" button and select the `sir-model` repository
+    - Make sure the clone path is set to the folder you created in step 1
+6. Click "Clone" and wait for the repository to be cloned to your computer
+
+The repo should now be cloned to your computer, and you should be able to see it in the "Local" section of GitKraken, which you can access using `cmd+O`/`ctrl+O`.
