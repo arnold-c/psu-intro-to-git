@@ -2,8 +2,8 @@ project:
   type: book
 
 book:
-  title: "Intro to Git and GitHub"
-  subtitle: "PSU Center for Infectious Disease Dynamics Workshop"
+  title: "An Introduction to Git and GitHub"
+  subtitle: "A Practical Guide for Busy Researchers"
   author: "Callum Arnold"
   date: today
   chapters:
