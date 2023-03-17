@@ -30,16 +30,17 @@ We'll start by fleshing out the README, which will act as a guide for how we wan
 This is a good practice to get into as it will help you think carefully about how you want to organize your code, and will help you and others understand what's going on in your repository, as it's easy to skip this step and end up with a repository that's hard to decipher.
 
 Let's first add the core components to the README.
+Copy the following into the `README.md` file:
 
 ```markdown
-## Repository title
-### About this project
+## Repository Title
+### About This Project
 
-### Repository structure
+### Repository Structure
 
-### Built with
+### Built With
 
-### Getting started
+### Getting Started
 
 ### Usage
 
@@ -54,8 +55,12 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 > **Note:** The `##` and `###` are used to denote different levels of headings in Markdown.
 I prefer to use a level-2 heading for the title of the repository, and level-3 headings for the different sections, as I find it makes the README easier to read; level-1 headings are quite large.
 
+Now lets rename the "Repository Title", and we can start to fill in a few of the sections.
+
+### About This Project
+
 Our project is going to contain an SIR model with births and deaths, which is a simple model of infectious disease transmission.
-The SIR model is a compartmental model, which means that it divides the population into different compartments (Susceptibles, Infected, and Removed), and tracks how people move between these compartments.
+The SIR model is a compartmental model, which means that it divides the population into different compartments (Susceptible, Infected, and Removed), and tracks how people move between these compartments.
 Not everyone is familiar with this, so we'll probably want to include this information in the README.
 Similarly, we'll likely want to include the basic differential equations that govern the model, and the parameters that we'll use to run the model (as well as a short description of what they mean).
 As we're going to use some code from Ottar's Epidemics book (chapter 2), we'll also want to include a link to the book (and citation).
@@ -84,3 +89,42 @@ R\_0 &= 0.0
 ```
 ````
 
+Fill in these details, and then we'll move on to the next section we can complete.
+
+### Repository Structure
+
+We can't fill in all of this section until we know exactly what the code is going to do, but we can at least give a rough outline.
+
+To start, I like to use the following folders to help organize my code, but you are welcome to use whatever structure works best for you:
+
+````markdown
+```
+.
+├── data/
+├── figs/
+├── funs/
+├── out/
+└── src/
+```
+
+- `data/` contains ...
+- `figs/` contains ...
+- `funs/` contains ...
+- `out/` contains ...
+- `src/` contains ...
+````
+
+- `data/` will contain any raw data that we use in our analysis, and is not edited by hand
+- `figs/` will contain any figures that we generate
+- `funs/` will contain any functions that we write to help us with small, repeatable things e.g. functions to format tables in a notebook
+- `out/` will contain any output from our analysis, e.g. intermediate datasets that have been cleaned and are ready for analysis, tables, etc
+- `src/` will contain any code that we write to do our analysis, e.g. notebooks, scripts, etc
+    - If you work with multiple languages, it might make sense to have subfolders for each language, e.g. `src/python/` and `src/R/`
+
+You will want to ensure that your descriptions of each of the folders includes enough detail that you (and anyone else reading your project) can understand what's going on, but not so much detail that it becomes hard to read.
+And remember, these folders will not appear in the git history until they contain a file that git can track.
+
+It's quite nice to include an ASCII tree to visualize the structure of the repository, and there are a couple of ways to generate this.
+If you use VSCode, you can install the [ASCII Tree Generator](https://marketplace.visualstudio.com/items?itemName=aprilandjan.ascii-tree-generator) extension, which will allow you to right-click on a folder and select "Generate Tree String" to generate a tree for that folder.
+If you use R with RStudio, you can use the `fs::dir_tree()` function from the [{fs} package](https://fs.r-lib.org).
+If you want to do it semi-manually, you can just use [this website](https://tree.nathanfriend.io/?s=(%27options!(%27fancy!true~fullPath!false~trailingSlash!true~rootDot!false)~5(%275%27Edit%20me%20to%20generate4a0nic6tre6*diagram%27%3A3*%3A%7D4Use%20indentation0to%20indicat6fil6and3folder3nesting.02You%20can%20even32us6*2markdown3*2bullets%27%3A%27)~version!%271%27)*%20%2004*2-%2030*4%5Cn*5source!6e3%01654320*).
