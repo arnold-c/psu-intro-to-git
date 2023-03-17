@@ -15,17 +15,17 @@ As you get more advanced, you'll want to explore them in a little more detail.
             margin-right: 0px;
             margin-top: 10px;
             margin-bottom: 10px;">
-- `add`
-- `commit`
-- `diff`
-- `amend`
-- `fetch`
-- `pull`
-- `push`
-- `branch`
-- `checkout`
-- `merge`
-- `pull request`
+- [`add`](#git-add)
+- [`commit`](#git-commit)
+- [`diff`](#git-diff)
+- [`amend`](#git-amend)
+- [`fetch`](#git-fetch)
+- [`pull`](#git-pull)
+- [`push`](#git-push)
+- [`branch`](#git-branch)
+- [`checkout`](#git-checkout)
+- [`merge`](#git-merge)
+- [`pull request`](#git-pull-request)
 </div>
 
 ### Useful to Know About
@@ -37,75 +37,77 @@ As you get more advanced, you'll want to explore them in a little more detail.
             margin-right: 0px;
             margin-top: 10px;
             margin-bottom: 10px;">
-- `revert`
-- `reset`
-- `rebase`
-- `rebase -i`
-- `HEAD`
-- `squash`
-- `cherry pick`
-- `reflog`
+- [`revert`](#git-revert)
+- [`reset`](#git-reset)
+- [`rebase`](#git-rebase)
+- [`rebase -i`](#git-rebase-i)
+- [`HEAD`](#git-head)
+- [`squash`](#git-squash)
+- [`cherry pick`](#git-cherry-pick)
+- [`reflog`](#git-reflog)
 </div>
 
 ## Term Descriptions
 ### Core
 
-- `add`: this takes all of the changes you have made to a file/set of files, and `stages` them, so they are ready to be committed
+- `add`{#git-add}: this takes all of the changes you have made to a file/set of files, and `stages` them, so they are ready to be committed
     - This is essential, as it allows you to work as you normally would, but save your changes in small chunks for more descriptive `commits` that are easier to understand and review.
     - `git add .` stages all files that have been modified, but you can specify specific files by explicitly naming them.
-- `commit`: this standings for *committing* a change to your file in Git.
+- `commit`{#git-commit}: this standings for *committing* a change to your file in Git.
     - Think of it as saving a document, but instead of saving the whole document as-is, Git saves just the changes since the last version. This makes it very efficient, especially when it comes to backing up your work.
     - **Key points:**
         - `commit` often. By making and saving small changes, your code versions becomes more readable in case you need to go back and find out exactly what and where it went wrong.
         -  Always write helpful messages - keep them succinct, but make sure they describe what the change you made was.
-- `diff`: this command shows you what has changed in a file since the last `commit`
+- `diff`{#git-diff}: this command shows you what has changed in a file since the last `commit`
     - This is your "tracked changes" view!
-- `amend`: this command add your changes to the most recent `commit`, rather than creating a new one.
+- `amend`{#git-amend}: this command add your changes to the most recent `commit`, rather than creating a new one.
     - This is useful when you forget to include something in a `commit`, i.e., it is a small change that belongs in the most recent `commit` and is not a substantial piece of work, even if the two are related
     - You never want to try to `amend` if your most recent `commit` has been `pushed` to the `remote`. You end up in a situation where collaborators might have already `pulled` your work so they are now out-of-sync with your rewritten git history, therefore git will not allow you to `push` these changes.
         - In this situation, just create a new `commit`!
-- `fetch`: checks the status of your `remote` and compares it to the version on your local machine, telling you if you are out of date i.e., need to `pull`
-- `pull`: this command copies the version of the code from your remote to your local machine.
+- `fetch`{#git-fetch}: checks the status of your `remote` and compares it to the version on your local machine, telling you if you are out of date i.e., need to `pull`
+- `pull`{#git-pull}: this command copies the version of the code from your remote to your local machine.
     - Use this when you want to get the most up-to-date version of your code to work on (assuming your local version isn't the most up-to-date)
-- `push`: the opposite of `pull`. If your local version is the most up-to-date version, `push` your version to the remote.
+- `push`{#git-push}: the opposite of `pull`. If your local version is the most up-to-date version, `push` your version to the remote.
     - You should try to do this a few times a day, but certainly less frequently than you `commit` to allow yourself some time to correct any mistakes before they are cemented into the git history
-- `branch`: 
-- `checkout`: changes the branch that you are working on
-- `merge`: merges code changes from one branch into another i.e., keeps the git history separate for each branch, but at the merge point reconciles the differences
+- `branch`{#git-branch}: a branch is a specific version of your code that has its own git history, separate from the code and history of other branches.
+    - This is useful for working on different features at the same time, as you can keep them separate until you are ready to merge them into the main code base.
+    - See [this section](how-git-works.qmd#branches) of the introduction for an overview, and the [branching section](branching-strategies.qmd) for more details about how you can use branches to your advantage.
+- `checkout`{#git-checkout}: changes the branch that you are working on
+- `merge`{#git-merge}: merges code changes from one branch into another i.e., keeps the git history separate for each branch, but at the merge point reconciles the differences
     - Most of the time this will work without issues, but occasionally if the two branches have made changes to the same line of code, you may get a merge conflict where you need to tell git which version of the code it should keep in the final merged state.
-- `Pull request`: this is not a feature or command of git itself, but of GitHub (and other remote repositories). It is effectively a merge that takes place online to the `remote`, rather than to your local version
+- `Pull request`{#git-pull-request}: this is not a feature or command of git itself, but of GitHub (and other remote repositories). It is effectively a merge that takes place online to the `remote`, rather than to your local version
     - This is useful as it allows for mechanisms like code checks before changes are merged into a branch, helping to minimize merge conflicts that can happen when multiple people change the same file sections during the same period of time between `pushes` to the `remote`.
 
 ### Useful Extras
 
-- `revert`: creates a new `commit` that undoes the changes made during a specific `commit`
+- `revert`{#git-revert}: creates a new `commit` that undoes the changes made during a specific `commit`
     - This is a useful and safe way of rolling back work as it does not delete any git history.
     - More applicable for public repositories that `reset`, as multiple collaborators rely on a shared git history, therefore it is critical this does not change unexpectedly.
-- `reset`: this command set the current branch `HEAD` to whichever `commit` you are choosing to `reset` to i.e., moves the working state of the branch back
+- `reset`{#git-reset}: this command set the current branch `HEAD` to whichever `commit` you are choosing to `reset` to i.e., moves the working state of the branch back
     - You do not need to specify a particular `commit` - this will just `reset` to the previous `commit`
     - I would recommend watching [this video](https://www.youtube.com/watch?v=s1idhUiCk38) to get a better understanding of how `reset` works
     - There are 3 main types of `reset`:
         - `reset --soft`: Will not reset any files that have been `staged` but not `committed`. All changes in previous `commits` will be uncommitted, but will still exist and saved as `staged` changes, ready for you to `commit` them again.
         - `reset --mixed`: Will reset any files that have been `staged` but not `committed`. All changes in previous `commits` will be uncommitted, but will still exist. Unlike `reset --soft`, these changes are `unstaged` changes by default, so you will have to `add` (`stage`) them before you can `commit` them again. This is useful to `unstage` files you `staged` by accident, without deleting the code modifications you made.
         - `reset --hard`: Unstages all files and changes all files back to the version specified e.g., `git reset --hard` (without a commit specified) deletes all the `uncommitted` code changes since the last `commit`. If you specify a `commit` e.g., `git reset --hard 1a23b456` you delete every change after `commit 1a23b456`
-- `rebase`: instead of `merge`, where the histories of each branch are retained, `rebase` moves all the `commits` from one branch onto the tip of the the other branch
+- `rebase`{#git-rebase}: instead of `merge`, where the histories of each branch are retained, `rebase` moves all the `commits` from one branch onto the tip of the the other branch
     - When you are getting started, you rarely want to use `rebase` over `merge`
-- `rebase -i`
+- `rebase -i`{#git-rebase-i}
     - There is a version of `rebase` called the interactive rebase that uses the command `rebase -i`
     - The interactive rebase allows you to completely rewrite the git history, including splitting up a `commit` into multiple smaller ones.
     - It is far beyond the scope of this workshop, and you should really think hard about whether it's necessary as it's easy to mess up your git history, but if you need to do this then you can find more information [here](https://git-scm.com/book/en/v2/Git-Tools-Rewriting-History)
-- `HEAD`: this is a description of which `commit` git points to
+- `HEAD`{#git-head}: this is a description of which `commit` git points to
     - When you `checkout` a branch, the `HEAD` is set to the last `commit` in that branch, by default.
     - However, you can choose to move the `HEAD` back down the branch's history, i.e., `checkout` a specific `commit`.
         - This is called a `detached HEAD` state.
         - This does not delete the `commits` that have happened since, but it does mean any changes you now make will diverge from the state of the code present at **that commit** and can not be accessed as they are not created within a branch.
             - You should create a new `branch` if you intend to create new `commits`
-- `squash`: this combines multiple `commits` into one
+- `squash`{#git-squash}: this combines multiple `commits` into one
     - You will rarely want/need to do this, particularly when starting out, but sometimes it can clean up the git history when performing a pull request that targeted a distinct new feature, and after a code review, doesn't need all the changes to be recorded in separate `commits`.
     - Easiest to perform during a pull request on the GitHub interface.
-- `cherry pick`: a command that allows selected `commits` to be appended to the current working `HEAD`.
+- `cherry pick`{#git-pick}: a command that allows selected `commits` to be appended to the current working `HEAD`.
     - This can be incredibly useful when you have local `commits` that you would like to move to a different branch, or if you would like to split up a `commit` into smaller ones.
-- `reflog`: git records every command you make in the *reference log*, including `checking-out` branches, and the `git reflog` shows you this log
+- `reflog`{#git-reflog}: git records every command you make in the *reference log*, including `checking-out` branches, and the `git reflog` shows you this log
     - Normally, this is not necessary to reference, but it can be useful if you end up in a position where you've `reset` a branch, and realize you didn't mean to do that.
     - You can reference the `reflog` to show which commands you want to roll back, and `checkout` that `detached HEAD` state, before carrying on as normal
         - `git checkout HEAD@{1}` would roll back one position (the end of the branch - the `attached HEAD` - sits at `HEAD@{0}`)
