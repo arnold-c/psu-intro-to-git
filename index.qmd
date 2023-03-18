@@ -4,6 +4,12 @@ This book accompanies the Pennsylvania State University's Center for Infectious 
 The content will mirror much of the workshop's syllabus, and act as a reference for attendees (and others), although I would highly recommend reading through the [excellent book](https://happygitwithr.com) by Jenny Bryan and co., as well as the [GitHub docs](https://docs.github.com/en) for more in-depth information.
 I also strongly recommend looking at the [Atlassian Git tutorials](https://www.atlassian.com/git/tutorials) for excellent in-depth tutorials about git, and [Learn Git Branching](https://learngitbranching.js.org) for an interactive way to learn git!
 
+## Motivation
+
+As mentioned above, there are plenty of great resources out there for learning git and GitHub.
+So why write another one?
+Well, in part, I wanted to try and consolidate the information out there without a bias and focus on R and R-studio, which many of the more introductory resources do, and without getting too deep into the weeds like some of the resources aimed at software developers rather than busy researchers.
+
 ## Pre-requisites
 
 There are some pre-requisite tasks to get set up ahead of the workshop.
