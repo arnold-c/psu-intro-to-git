@@ -7,7 +7,7 @@ However, if you don't and you've been told by someone you should start using Git
 Git is a version-control system (VSC).
 Think of it like a better version of Microsoft Word tracked changes and Google version history that can track everything from code, to text, to pdf images.
 Much like how tracked changes is useful for both single and multi-user documents, Git can help us remember what we've done, when, and what version of the document(s) previously existed, as well as denoting which user made the changes.
-Where tracked changes can get unwieldy after multiple iterations, Git makes it easy to understand the whole file history without needing to use *document_v3* filenames - just keep changing the same original file for as long as you want!
+Where tracked changes can get unwieldy after multiple iterations, Git makes it easy to understand the whole file history without needing to use ***document_v3*** filenames - just keep changing the same original file for as long as you want!
 In addition to just being able to understand a file history, when working on a project, even if you're the only one coding, it's important to be able to go back to previous versions if you make a mistake.
 This is possible with Git!
 In fact, this book was created using Git and GitHub, so you can explore how it was put together and iterated by going to the [GitHub page]().
