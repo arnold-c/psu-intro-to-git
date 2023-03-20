@@ -23,6 +23,13 @@ book:
         - branching-strategies.qmd
         - recommended-practices.qmd
     - references.qmd
+  search: true
+  repo-url: https://github.com/arnold-c/psu-intro-to-git
+  repo-actions: [edit]
+  downloads: [pdf]
+  sidebar: 
+    style: "docked"
+    border: true
 
 bibliography: references.bib
 
