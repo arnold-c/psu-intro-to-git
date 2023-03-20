@@ -11,7 +11,7 @@ We'll create a new repository on GitHub, and then clone it to our local machine.
 We'll follow the steps outlined in the [GitHub First section](making-your-first-repo.qmd#github-first).
 So, in summary:
 
-1. On your computer, decide where you want to store all your git repositories, and create a folder for them
+1. On your computer, decide where you want to store all your Git repositories, and create a folder for them
     - Mine has the path ***~/Documents/Repos/***, but you can put it wherever you want
 2. Create a new repository on GitHub, and name it `sir-model`
     - Make sure you inialize it with a ***README.md***, Description, R/Python ***.gitignore*** template (depending on the language you'd like to follow along with), and an MIT license
@@ -63,7 +63,7 @@ Now, rename the "Repository Title", and this is a good spot to create our first 
 
 ### Creating The First Commit
 
-At this stage, we have a repository with a README, but we haven't actually saved any changes to the repository as far as git is concerned.
+At this stage, we have a repository with a README, but we haven't actually saved any changes to the repository as far as Git is concerned.
 When we cloned our repository, the ***README.md*** only contained the text that GitHub added by default (the repo name and short description - you can check this on GitHub if you'd like).
 If you open up GitKraken, you'll see that it is showing that we have made changes to a file, indicated by the pencil icon in the commit history section, as well as the note above the commit message box that says *"1 file change in working directory"*.
 
@@ -88,7 +88,7 @@ You can change this if you would like, by clicking on the buttons in the top-rig
 :::
 
 Now that we've made our first **commit**, we will see that the pencil icon has disappeared and we have a similar view to what we started with when we cloned the repository.
-The key difference is now there are two `main` branches being shown in the git history.
+The key difference is now there are two `main` branches being shown in the Git history.
 The one with the computer that is highlighted is the **local** branch, which is the branch that is stored on our computer.
 The other branch is the **remote** branch, which is the branch that is stored on GitHub.
 Because we've just made a commit, the **local** branch is ahead of the **remote** branch by one commit as we haven't pushed our changes to GitHub yet.
@@ -123,9 +123,9 @@ To add this to a ***README.md*** file, we can use the following syntax:
 \gamma &= \frac{1}{2} \\\\
 
 N &= 1000 \\
-S\_0 &= 999.0 \\
-I\_0 &= 1.0 \\
-R\_0 &= 0.0
+S_0 &= 999.0 \\
+I_0 &= 1.0 \\
+R_0 &= 0.0
 \end{align}
 ```
 ````
@@ -178,7 +178,7 @@ To start, I like to use the following folders to help organize my code, but you 
     - If you work with multiple languages, it might make sense to have subfolders for each language, e.g. ***src/python/*** and ***src/R/***
 
 You will want to ensure that your descriptions of each of the folders includes enough detail that you (and anyone else reading your project) can understand what's going on, but not so much detail that it becomes hard to read.
-And remember, these folders will not appear in the git history until they contain a file that git can track.
+And remember, these folders will not appear in the Git history until they contain a file that Git can track.
 
 It's quite nice to include an ASCII tree to visualize the structure of the repository, and there are a couple of ways to generate this.
 If you use VSCode, you can install the [ASCII Tree Generator](https://marketplace.visualstudio.com/items?itemName=aprilandjan.ascii-tree-generator) extension, which will allow you to right-click on a folder and select *"Generate Tree String"* to generate a tree for that folder.
@@ -251,3 +251,99 @@ ggplot(out_df, aes(x = time, y = number, color = state)) +
 
 We've now made some substantial changes to the repository, so let's make a **commit**.
 The process is exactly the same as before.
+
+## Updating the README
+### Mistake in our Model Description
+
+Now that we've added some code, let's go back and update the README.
+Looking at what we've written, we can see that the code is actually different from what we had in the README, so we'll need to update that.
+Examining the code, we can see that we've run the model on fractional populations, not whole numbers, so we'll need to update the description of the model to reflect that.
+
+Go back and adjust the $S_0$ ... values in the equations to represent fractions, and then update the description of the model to reflect that.
+
+Because we've made some changes that are distinct from the other changes we've made, we'll again want to make a **commit** for these changes.
+
+### Expanding Upon the README
+
+Now we have some code, we can expand upon sections of the README.
+The first thing we can do is to add some text to the "Getting Started" section.
+I've used the `{renv}` package to manage the R environment for this project, so I'll add some text to the README to reflect that.
+
+```markdown
+I've used the `{renv}` package to manage the R environment for this project.
+For more details on how to use `{renv}`, see [this article](https://rstudio.github.io/renv/articles/renv.html), but in brief, it creates a snapshot of the installed packages and their versions.
+
+To get started, you will need to install `{renv}` as usual (i.e., `install.packages("renv")`), and then run `renv::restore()` to install the packages that are used in this project (the record in the ***renv.lock*** file).
+```
+
+The following text can be added to the "Usage" section.
+
+```markdown
+To run the SIR model, you can open the ***src/sir_model.R*** file and run the code as usual.
+```
+
+### Amending the README Commit
+
+We forgot to update the "Built With" section of the README, but we don't want to make a whole new **commit** just for that, as making tons of tiny small **commits** will make it harder to read and navigate the Git history if you need to reference past work.
+Thankfully, this change aligns with the previous **commit**, so we don't need to make a new **commit**.
+Instead, we can **amend** the previous **commit** to include the changes we've made.
+
+We want to add the following text to the "Built With" section of the README.
+
+```markdown
+- [R version 4.2.1 (2022-06-23)](https://cran.r-project.org/bin/macosx/)
+- [`{renv}`](https://rstudio.github.io/renv/articles/renv.html) for package management
+```
+
+::: {.callout-warning}
+
+We can only **amend** **staged** changes to the most recent **commit**, and only if we haven't **pushed** it to GitHub yet.
+If we've already **pushed** the **commit**, we'll need to make a new **commit**.
+If you do not make a new **commit** and try and just **amend** it, you'll get an error because Git wants to avoid rewriting history that might have been accessed by others, resulting in conflicting Git histories on different machines.
+
+:::
+
+Once we've made and saved the changes to the ***README.md***, we can **stage** them and then **amend** the previous **commit**.
+
+As per usual, when we save and **stage** the changes, we'll see the **diff** in the GitKraken interface, as below.
+
+![](./figs/Basic-workflow_amend01.png)
+
+You can see that just above the "Commit Message" input section, there is a button for "Amend".
+Clicking this will **amend** the previous **commit** to include the changes we've made.
+As such, it will set the **commit** message to the same as the previous **commit**, so there is nothing else to do.
+During the **amend** process, GitKraken will also change the text of the "Commit" button from *"Commit changes to X file(s)"* to *"Amend Previous Commit"*, as below.
+
+![](./figs/Basic-workflow_amend02.png)
+
+Once we've **amended** the **commit**, can examine the Git history and see that there is only one **commit** that refers to the changes we've made to the ***README.md*** file.
+Equally, if we look at the **diff** of this **commit**, we can see that our **amended** changes are included.
+
+![](./figs/Basic-workflow_amend03.png)
+
+## Our First Push
+
+Now that we've made some substantial changes to the repository, we can **push** them to GitHub.
+This is pretty straightforward to do, and we can do it from the GitKraken interface.
+
+On the GitKraken client, there is a button in the top toolbar that is an up arrow, with the description "Push".
+When we hover over it, it shows the text "Push to origin/main".
+
+![](./figs/Basic-workflow_push01.png)
+
+Pushing the changes will bring the version of the code on GitHub up-to-date with the version of the code on our local machine.
+We can see that the **main** branch with out GitHub user photo is now in-line with the **main** branch of our local machine.
+
+![](./figs/Basic-workflow_push02.png)
+
+We can also confirm this is the case by navigating to our repository on GitHub and looking at the Git history.
+
+![](./figs/Basic-workflow_push03.png)
+
+::: {.callout-note}
+
+The Git history on GitHub will show the relative time that the **commit** was made, not **pushed** to GitHub.
+
+:::
+
+

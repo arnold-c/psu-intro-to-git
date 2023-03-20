@@ -36,6 +36,8 @@ format:
   html:
     theme: cosmo
     code-copy: true
+    code-fold: false
+    code-overflow: wrap
   pdf:
     documentclass: scrreprt
 
