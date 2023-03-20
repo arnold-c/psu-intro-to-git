@@ -151,7 +151,7 @@ If you use GitKraken, pressing `cmd+N`/`ctrl+N` should bring up the clone window
 
 If you have connected GitKraken to GitHub, you can search through your GitHub repositories, otherwise you can paste in the HTTPS or SSH urls in the "Clone with URL" section.
 
-To find your HTTPS/SSH urls, navigate to the repository, and click on the `< > Code` button, before selecting either HTTPS or SSH, depending on your [initial GitHub setup](./prereqs.qmd#linking-git-to-github).
+To find your HTTPS/SSH urls, navigate to the repository, and click on the `< > Code` button, before selecting either HTTPS or SSH, depending on your [initial GitHub setup](./github-setup.qmd#linking-git-to-github).
 These urls have a consistent pattern, so you don't always have to go to GitHub to find them.
 
 For HTTPS, they are `https://github.com/GITHUB_USERNAME/REPOSITORY_NAME.git`.
@@ -164,8 +164,8 @@ If you do not have a git client, navigate to the directory where you would like 
 Then open up the terminal/Git Bash command line in this location.
 From here you have two options.
 
-1. Create a folder for your repository (ideally use the same or a very similar name to the one on GitHub) and use the terminal command `git clone git@github.com:GITHUB_USERNAME/REPOSITORY_NAME.git .` (if you are using [SSH](./prereqs.qmd#linking-git-to-github)) from within this folder to clone the contents of the GitHub repository into this folder.
-2. Enter the command `git clone git@github.com:GITHUB_USERNAME/REPOSITORY_NAME.git` (if you are using [SSH](./prereqs.qmd#linking-git-to-github)) to create and clone the repository into `~/Documents/Repos/REPOSITORY_NAME` (note the lack of the `.` at the end of the command)
+1. Create a folder for your repository (ideally use the same or a very similar name to the one on GitHub) and use the terminal command `git clone git@github.com:GITHUB_USERNAME/REPOSITORY_NAME.git .` (if you are using [SSH](./github-setup.qmd#linking-git-to-github)) from within this folder to clone the contents of the GitHub repository into this folder.
+2. Enter the command `git clone git@github.com:GITHUB_USERNAME/REPOSITORY_NAME.git` (if you are using [SSH](./github-setup.qmd#linking-git-to-github)) to create and clone the repository into `~/Documents/Repos/REPOSITORY_NAME` (note the lack of the `.` at the end of the command)
 
 That's it, you're ready to start using git!
 
@@ -206,10 +206,10 @@ And that's it.
 
 ### No Git Client
 
-Firstly, go [install a git client](./prereqs.qmd#installing-a-git-client) if you are learning git - you'll save yourself a lot of time and heartache when it comes to the day-to-day of using git.
+Firstly, go [install a git client](./git-client.qmd#installing-a-git-client) if you are learning git - you'll save yourself a lot of time and heartache when it comes to the day-to-day of using git.
 But if you're insistent that you need to use the command line at this stage, or just are interested in understanding what commands your GUI is performing, carry on reading.
 
-From here, your code will vary slightly depending on whether you set up git using [SSH or PAT token](./prereqs.qmd#linking-git-to-github), but the structure is generally the same.
+From here, your code will vary slightly depending on whether you set up git using [SSH or PAT token](./github-setup.qmd#linking-git-to-github), but the structure is generally the same.
 If you already have code, you can ignore `echo ...` in step 2 as you have files git can track (though you should add a README.md!), and replace `README.md` with the file(s) you wish to track.
 
 1. Open a terminal/Git Bash command line in your directory

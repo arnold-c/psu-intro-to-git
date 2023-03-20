@@ -8,7 +8,12 @@ book:
   date: today
   chapters:
     - index.qmd
-    - prereqs.qmd
+    - part: "Prerequisites"
+      chapters:
+        - git-overview.qmd
+        - install-git.qmd
+        - github-setup.qmd
+        - git-client.qmd
     - part: "Working with Git"
       chapters:
         - how-git-works.qmd

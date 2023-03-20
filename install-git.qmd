@@ -1,0 +1,70 @@
+# Installing Git
+
+To get started, you first need to install git.
+There are many ways to get git running on your computer, but the recommended steps depend on the operating system you have.
+
+## Mac OS and Linux
+
+If you're on Mac OS or Linux, you likely already have git pre-installed.
+However, you are unlikely to have the most up-to-date version and I'd recommend you install it manually.
+If you do not already use a package manager, I would suggest you download [homebrew](https://homebrew.com) as it is the most widely used and therefore can download the most applications.
+Homebrew also now works for Linux (see [here](https://docs.brew.sh/Homebrew-on-Linux) for more details), and is useful as its packages can often be more up-to-date than those through some Linux package managers.
+
+1. Open the terminal and enter `/usr/bin/ruby -e "$(curl -fsSL https:/raw.githubusercontent.com/Homebrew/install/master/install)"`
+2. Enter `brew install git` into the terminal
+3. Enter `which git` into the terminal
+    a. You should see `/opt/homebrew/bin/git`, if not, you may need to edit the [environment variables](#env-variables)
+
+Using homebrew to install packages makes it easy to update them (including git).
+All you need to do is type `brew update` and all your brew-installed packages are updated in one command!
+
+## Windows
+
+Getting set up on Windows requires a bit more work as Windows doesn't come with a good terminal (command prompt doesn't count!).
+If you want to explore using Windows Subsystem for Linux (WSL), then go for it as it'd probably make your life easier as you get into more advanced things like cloud computing and remote servers (see [here](https://learn.microsoft.com/en-us/windows/wsl/tutorials/wsl-git) for more details, or use [homebrew for linux](https://docs.brew.sh/Homebrew-on-Linux)), but for the moment, you can use the following steps to get started.
+
+1. Install [Git for Windows](https://gitforwindows.org/)
+    - This gives you Git Bash, which is a much nicer way of interfacing with Git than the command line.
+    - **Note:** when asked about "*Adjusting your PATH environment*", be sure to select "*Git from the command line and also from 3rd-party software*". The other default options should be fine. For more details about the installation settings, please click [here](https://github.com/jennybc/happy-git-with-r/issues/105)
+2. Open up Git Bash and enter `which git`, or open up the command prompt and enter `where git`. Depending on whether you have administrator privileges, the outputs should look something like this, respectively
+    1. `which git` : `/mingw64/bin/git`
+    2. `where git` : `C:\Users\owner\AppData\Local\Programs\git\bin\git.exe` (User privileges)
+        1. `where git` : `C:\Program Files\git\bin\git.exe` (administrator privileges)
+    - If you see `cmd` instead of `bin`, then you need to edit the PATH in your [environment variables](#env-variables).
+
+You could also install git using [Chocolatey](https://chocolatey.org), as this would provide you with a package manager that you can use to install other useful software, much like homebrew on Mac OS.
+
+## Final Git set up steps
+
+Now that you have Git running, you need to tell it who you are.
+This allows multiple people to make changes to code, and the correct names will be attached to the changes.
+We will also make sure that all git repositories use the default branch name `main`.
+
+Open up the Git Bash or the terminal and enter
+
+```
+git config --global user.name 'Firstname Lastname'
+git config --global user.email 'my_email@domain.com'
+git config --global init.defaultBranch main
+```
+
+Typing in `git config --global --list` is a way to check that your details have been saved correctly.
+
+> **Note:** the email you use with git will be published when you `push` to GitHub, so if you don't want your email to be public, you can use the [GitHub-provided no-reply email address](https://docs.github.com/en/account-and-profile/setting-up-and-managing-your-personal-account-on-github/managing-email-preferences/setting-your-commit-email-address#setting-your-commit-email-address-on-github) instead.
+The key points are that you need to turn on email privacy in your GitHub settings, and then using that address in your git config.
+> 
+> On another note, if you would prefer to use a different user name than your GitHub user name you can.
+This would help show you which computer you completed the work on, but it is not important to most people.
+
+## Troubleshooting
+### Environment Variables {#env-variables}
+
+If you are not able to access git appropriately (i.e., from the terminal/git bash), you may need to edit the environment variables.
+
+In Windows you do this by navigating to `Environment Variables` from the Windows key/Start prompt and editing the PATH in `User Variables`.
+To do this, scroll to the PATH section of User/System variables (depending on whether you have administrator privileges), and changing `cmd` to `bin` in the `git.exe` path. 
+
+In Mac, you should open the terminal and use `vi`/`touch`/`nano` command to edit the `~/.zshrc`/`~/.bashrc` file (depending on how old your Mac is - OSX switched to zsh in 2019) e.g., `vi ~/.zshrc`, which opens (or creates if missing) the file that stores your PATH.
+From here, type `export PATH="path-to-git-executable:$PATH"` to add the executable to the path.
+For me, using a Mac and homebrew, my git path is `export PATH="/opt/homebrew/bin:$PATH"`.
+Now save and exit the text editor, source the file if on Mac (e.g., run `source ~/.zshrc` in your terminal), and you're good to go.
