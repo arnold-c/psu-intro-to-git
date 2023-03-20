@@ -12,25 +12,25 @@ We'll follow the steps outlined in the [GitHub First section](making-your-first-
 So, in summary:
 
 1. On your computer, decide where you want to store all your git repositories, and create a folder for them
-    - Mine has the path `~/Documents/Repos/`, but you can put it wherever you want
+    - Mine has the path ***~/Documents/Repos/***, but you can put it wherever you want
 2. Create a new repository on GitHub, and name it `sir-model`
-    - Make sure you inialize it with a README, Description, R/Python `.gitignore` template (depending on the language you'd like to follow along with), and an MIT license
+    - Make sure you inialize it with a ***README.md***, Description, R/Python ***.gitignore*** template (depending on the language you'd like to follow along with), and an MIT license
 3. Open GitKraken
-4. Open the "Clone" window using `cmd+N`/`ctrl+N`
-5. Click on the "GitHub" button and select the `sir-model` repository
+4. Open the *"Clone"* window using **cmd+N**/**ctrl+N**
+5. Click on the *"GitHub"* button and select the `sir-model` repository
     - Make sure the clone path is set to the folder you created in step 1
-6. Click "Clone" and wait for the repository to be cloned to your computer
+6. Click *"Clone"* and wait for the repository to be cloned to your computer
 
-The repo should now be cloned to your computer, and you should be able to see it in the "Open a repo" section of GitKraken, which you can access using `cmd+O`/`ctrl+O`.
+The repo should now be cloned to your computer, and you should be able to see it in the *"Open a repo"* section of GitKraken, which you can access using **cmd+O**/**ctrl+O**.
 
 ## Giving Our Repository Some Structure
 
 Now that we have a repository, we need to give it some structure.
-We'll start by fleshing out the README, which will act as a guide for how we want to structure our repository.
+We'll start by fleshing out the ***README***, which will act as a guide for how we want to structure our repository.
 This is a good practice to get into as it will help you think carefully about how you want to organize your code, and will help you and others understand what's going on in your repository, as it's easy to skip this step and end up with a repository that's hard to decipher.
 
-Let's first add the core components to the README.
-Copy the following into the `README.md` file:
+Let's first add the core components.
+Copy the following into the ***README.md*** file:
 
 ```markdown
 ## Repository Title
@@ -52,38 +52,46 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ### Acknowledgements
 ```
 
-> **Note:** The `##` and `###` are used to denote different levels of headings in Markdown.
+::: {.callout-note}
+
+The `##` and `###` are used to denote different levels of headings in Markdown.
 I prefer to use a level-2 heading for the title of the repository, and level-3 headings for the different sections, as I find it makes the README easier to read; level-1 headings are quite large.
 
-Now, rename the "Repository Title", and this is a good spot to create our first `commit` before we start to fill in a few of the sections.
+:::
+
+Now, rename the "Repository Title", and this is a good spot to create our first **commit** before we start to fill in a few of the sections.
 
 ### Creating The First Commit
 
 At this stage, we have a repository with a README, but we haven't actually saved any changes to the repository as far as git is concerned.
-When we cloned our repository, the `README.md` only contained the text that GitHub added by default (the repo name and short description - you can check this on GitHub if you'd like).
-If you open up GitKraken, you'll see that it is showing that we have made changes to a file, indicated by the pencil icon in the commit history section, as well as the note above the commit message box that says "1 file change in working directory".
+When we cloned our repository, the ***README.md*** only contained the text that GitHub added by default (the repo name and short description - you can check this on GitHub if you'd like).
+If you open up GitKraken, you'll see that it is showing that we have made changes to a file, indicated by the pencil icon in the commit history section, as well as the note above the commit message box that says *"1 file change in working directory"*.
 
 ![](figs/Basic-workflow_first-commit-changes01.png)
 
 Clicking on either of these sections will present you will the below window, which shows you the changes that have been made to the file.
-You will also notice that the changes are `unstaged`, which means they will not be included in the next commit.
+You will also notice that the changes are **unstaged**, which means they will not be included in the next commit.
 
 ![](figs/Basic-workflow_first-commit-changes02.png)
 
-Clicking on the `README.md` file will open up the file `diff` in the GitKraken editor, and you can see that the changes are highlighted in green (for additions) and red (for deletions).
-Once we are happy with the changes, we can `stage` them and write the `commit` message.
-The `commit` message title should be short and descriptive, and the body should contain more details about the changes that were made, if necessary for clarity.
+Clicking on the ***README.md*** file will open up the file **diff** in the GitKraken editor, and you can see that the changes are highlighted in green (for additions) and red (for deletions).
+Once we are happy with the changes, we can **stage** them and write the **commit** message.
+The **commit** message title should be short and descriptive, and the body should contain more details about the changes that were made, if necessary for clarity.
 
 ![](figs/Basic-workflow_first-commit-changes03.png)
 
-> **Note:** Your `diff` view may look different than mine shown here e.g., it may default to lines being shown above each other, rather than side-by-side.
-You can change this if you would like, by clicking on the buttons in the top-right corner of the editor window, just below the button that says "Unstage File".
+::: {.callout-note}
 
-Now that we've made our first `commit`, we will see that the pencil icon has disappeared and we have a similar view to what we started with when we cloned the repository.
+Your **diff** view may look different than mine shown here e.g., it may default to lines being shown above each other, rather than side-by-side.
+You can change this if you would like, by clicking on the buttons in the top-right corner of the editor window, just below the button that says *"Unstage File"*.
+
+:::
+
+Now that we've made our first **commit**, we will see that the pencil icon has disappeared and we have a similar view to what we started with when we cloned the repository.
 The key difference is now there are two `main` branches being shown in the git history.
-The one with the computer that is highlighted is the `local` branch, which is the branch that is stored on our computer.
-The other branch is the `remote` branch, which is the branch that is stored on GitHub.
-Because we've just made a commit, the `local` branch is ahead of the `remote` branch by one commit as we haven't pushed our changes to GitHub yet.
+The one with the computer that is highlighted is the **local** branch, which is the branch that is stored on our computer.
+The other branch is the **remote** branch, which is the branch that is stored on GitHub.
+Because we've just made a commit, the **local** branch is ahead of the **remote** branch by one commit as we haven't pushed our changes to GitHub yet.
 We'll do that later after we've added a few more things to the README.
 
 ![](figs/Basic-workflow_first-commit-changes04.png)
@@ -97,7 +105,7 @@ The SIR model is a compartmental model, which means that it divides the populati
 Not everyone is familiar with this, so we'll probably want to include this information in the README.
 Similarly, we'll likely want to include the basic differential equations that govern the model, and the parameters that we'll use to run the model (as well as a short description of what they mean).
 As we're going to use some code from Ottar's Epidemics book (chapter 2), we'll also want to include a link to the book (and citation).
-To add this to a README.md file, we can use the following syntax:
+To add this to a ***README.md*** file, we can use the following syntax:
 
 ````markdown
 ```math
@@ -147,18 +155,18 @@ To start, I like to use the following folders to help organize my code, but you 
 - `src/` contains ...
 ````
 
-- `data/` will contain any raw data that we use in our analysis, and is not edited by hand
-- `figs/` will contain any figures that we generate
-- `funs/` will contain any functions that we write to help us with small, repeatable things e.g. functions to format tables in a notebook
-- `out/` will contain any output from our analysis, e.g. intermediate datasets that have been cleaned and are ready for analysis, tables, etc
-- `src/` will contain any code that we write to do our analysis, e.g. notebooks, scripts, etc
-    - If you work with multiple languages, it might make sense to have subfolders for each language, e.g. `src/python/` and `src/R/`
+- ***data/*** will contain any raw data that we use in our analysis, and is not edited by hand
+- ***figs/*** will contain any figures that we generate
+- ***funs/*** will contain any functions that we write to help us with small, repeatable things e.g. functions to format tables in a notebook
+- ***out/*** will contain any output from our analysis, e.g. intermediate datasets that have been cleaned and are ready for analysis, tables, etc
+- ***src/*** will contain any code that we write to do our analysis, e.g. notebooks, scripts, etc
+    - If you work with multiple languages, it might make sense to have subfolders for each language, e.g. ***src/python/*** and ***src/R/***
 
 You will want to ensure that your descriptions of each of the folders includes enough detail that you (and anyone else reading your project) can understand what's going on, but not so much detail that it becomes hard to read.
 And remember, these folders will not appear in the git history until they contain a file that git can track.
 
 It's quite nice to include an ASCII tree to visualize the structure of the repository, and there are a couple of ways to generate this.
-If you use VSCode, you can install the [ASCII Tree Generator](https://marketplace.visualstudio.com/items?itemName=aprilandjan.ascii-tree-generator) extension, which will allow you to right-click on a folder and select "Generate Tree String" to generate a tree for that folder.
+If you use VSCode, you can install the [ASCII Tree Generator](https://marketplace.visualstudio.com/items?itemName=aprilandjan.ascii-tree-generator) extension, which will allow you to right-click on a folder and select *"Generate Tree String"* to generate a tree for that folder.
 If you use R with RStudio, you can use the `fs::dir_tree()` function from the [{fs} package](https://fs.r-lib.org).
 If you want to do it semi-manually, you can just use [this website](https://tree.nathanfriend.io/?s=(%27options!(%27fancy!true~fullPath!false~trailingSlash!true~rootDot!false)~5(%275%27Edit%20me%20to%20generate4a0nic6tre6*diagram%27%3A3*%3A%7D4Use%20indentation0to%20indicat6fil6and3folder3nesting.02You%20can%20even32us6*2markdown3*2bullets%27%3A%27)~version!%271%27)*%20%2004*2-%2030*4%5Cn*5source!6e3%01654320*).
 

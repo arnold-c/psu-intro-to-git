@@ -4,32 +4,40 @@ It's very easy to get set up on [GitHub](https://Github.com).
 Just click the link above and select the package you'd like.
 If you have an academic email address, consider making this your primary email address on the account, as it gives you a **PRO** account for free with access to more features.
 See [here](https://docs.github.com/en/get-started/learning-about-github/githubs-products) for more details about the differences.
-If you are a student, you should also sign up for the [GitHub Student Developer Pack](https://education.github.com/pack) as this gives you free access to a bunch of useful tools, such as the GitKraken git client mentioned earlier.
+If you are a student, you should also sign up for the [GitHub Student Developer Pack](https://education.github.com/pack) as this gives you free access to a bunch of useful tools, such as the GitKraken Git client mentioned earlier.
 If you are a teacher, you get access to a GitHub Teams account, which also comes with its own set of benefits (see [here](https://education.github.com/teachers) for more details).
 
 Be sure to choose a user name that is easy to remember, and easy to find.
 I would suggest just using your name, or the username you have for other work-related accounts (e.g., Twitter).
 It's quite annoying to try and change this later, so spend a little time thinking about it now.
 
-> **Note:** You can choose a public-facing name that is different to your username, so you can just use your full name here if yours is long and you don't want to use it as your username.
+::: {.callout-note}
 
-Now you have a GitHub account set up, this is your *remote*.
+You can choose a public-facing name that is different to your username, so you can just use your full name here if yours is long and you don't want to use it as your username.
+
+:::
+
+Now you have a GitHub account set up, this is your **remote**.
 If you work on a project with collaborators, this can be shared with them.
-That way, collaborators can work on their own versions of the code on their *local* machine (computer), and when it's ready for other people to use/help write, they can `push` it to the *remote* where others can access it.
-Don't worry if you don't know what `push` is - we'll cover that [soon](#basic-commands).
+That way, collaborators can work on their own versions of the code on their **local** machine (computer), and when it's ready for other people to use/help write, they can `push` it to the **remote** where others can access it.
+Don't worry if you don't know what `push` is - we'll cover that [soon](git-mechanics.qmd#core-commands).
 
 ## Linking Git to GitHub
 
-Now you have a GitHub account, you need link it to your local git installation.
+Now you have a GitHub account, you need link it to your local Git installation.
 There are a couple of different methods for doing this.
-The first is to use HTTPS and Personal Access Tokens (PATs).
+The first is to use HTTPS and **Personal Access Tokens (PATs)**.
 This is somewhat easier to set up, but it's a little less secure and ultimately is more annoying to use as it often requires entering your username and password each time you connect to GitHub.
-The second is to use SSH, which is a little more complicated to set up, but is more secure and easier to use once it's set up.
+The second is to use **SSH**, which is a little more complicated to set up, but is more secure and easier to use once it's set up.
 Unlike Jenny Bryan, I think it's worth the effort to set up SSH as you front load the work (though it's not too bad), and then you can just forget about it.
 Knowing SSH basics is also really useful as it's the basis for many other things, such as connecting to remote servers and computing on clusters, so will serve you well moving forward.
 
-Instead of trying to cover all eventualities for all operating systems, please work through the excellent GitHub docs on [PATs](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token) and [SSH](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent).
-If you are having issues after working through the steps, then try reading [Jenny Bryan's excellent git guide](https://happygitwithr.com), which covers both [PATs](https://happygitwithr.com/https-pat.html#https-pat) and [SSH](https://happygitwithr.com/ssh-keys.html#ssh-keys).
+Instead of trying to cover all eventualities for all operating systems, please work through the excellent GitHub docs on [**PATs**](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token) and [**SSH**](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent).
+If you are having issues after working through the steps, then try reading [Jenny Bryan's excellent Git guide](https://happygitwithr.com), which covers both [**PATs**](https://happygitwithr.com/https-pat.html#https-pat) and [**SSH**](https://happygitwithr.com/ssh-keys.html#ssh-keys).
 If nothing here works, let me know and I'll try to help!
 
-> **Note:** if you use the GitKraken client ([detailed below](#connecting-gitkraken-with-github)), you can use the instructions in their documentation to create and pass the SSH keys directly to GitHub. This assumes you have linked GitKraken to your GitHub account.
+::: {.callout-tip}
+
+If you use the GitKraken client ([detailed here](git-client.qmd#connecting-gitkraken-with-github)), you can use the instructions in their documentation to create and pass the SSH keys directly to GitHub. This assumes you have linked GitKraken to your GitHub account.
+
+:::

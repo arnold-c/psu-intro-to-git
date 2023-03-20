@@ -1,7 +1,7 @@
 # Making Your First Git Repo
 
-In general, there are two ways to make a git repo.
-You can start with a local repo and `push` it to GitHub, or you can start with a GitHub repo and `clone` it to your local machine.
+In general, there are two ways to make a Git repo.
+You can start with a local repo and **push** it to GitHub, or you can start with a GitHub repo and **clone** it to your local machine.
 If you don't have any existing code, it's marginally easier to start with GitHub, which is why we'll start with this workflow.
 But no problem if you have code on your local machine - you just need to follow slightly different steps to connect the two.
 You will have to make the exact same decisions about repository structure, regardless of the workflow you use, so it's worth reading through the [GitHub First](#github-first) section as we'll go into the most detail here.
@@ -12,7 +12,7 @@ If you have the GitKraken client installed, and it is connected to your GitHub a
 This makes the set up a little bit easier, as you don't have to use your browser or clone the repository.
 Otherwise, it works through exactly the same steps as the browser-based workflow, which I'll walk through below in case you do not have GitKraken.
 
-![Pressing `cmd+I`/`ctrl+I` brings up the "Init" window](figs/GitHub-new-repo_gitkraken-github-init.png)
+![Pressing **cmd+I**/**ctrl+I** brings up the *"Init"* window](figs/GitHub-new-repo_gitkraken-github-init.png)
 
 ### Creating the Repository
 
@@ -35,7 +35,7 @@ Ideally, you should follow Jenny Bryan's excellent guidelines when it comes to f
 - Use `_` to separate metadata (e.g. dates from script description)
 - Try to be consistent in how you use case e.g., `CamelCase` vs `camelCase` vs `snake_case` vs `everythingmashedtogether`
 
-For example, the repository for this workshop book is `psu-into-to-git`.
+For example, the repository for this workshop book is **psu-into-to-git**.
 I'd highly recommend skimming [these slides](https://speakerdeck.com/jennybc/how-to-name-files?slide=2) to learn more and save you some hassle in your digital life.
 
 ### Description
@@ -48,20 +48,20 @@ For example, the description for this project is:
 
 ### Public vs Private
 
-Obviously this is a personal decision, but one of the benefits of learning and using git is that it facilitates collaboration.
-While not all code can be open-sourced for legal, ethical, or other reasons, if you can, I would encourage you to try and publish the code as a "Public" repository.
+Obviously this is a personal decision, but one of the benefits of learning and using Git is that it facilitates collaboration.
+While not all code can be open-sourced for legal, ethical, or other reasons, if you can, I would encourage you to try and publish the code as a *"Public"* repository.
 Not only is it in keeping with the principles of open and collaborative science, particularly when it comes to peer-review, but you also might get helpful feedback on your work from interested parties.
 If you've done something great that you want to share with the world, say, you've developed an awesome package or method of analyzing your data, it's cool if people can build off your work.
 But from a personal perspective, members of the community can, and often will, help you improve your code and move it forwards, giving it robustness and allowing you to do new things that you hadn't thought of.
 
-You can always change the visibility of the repo later by going to the "Danger Zone > Visibility" option at the bottom of the "Settings > General" page.
+You can always change the visibility of the repo later by going to the *"Danger Zone > Visibility"* option at the bottom of the *"Settings > General"* page.
 
 ### README
 
-The `README.md` acts as the landing page to your repository.
+The ***README.md*** acts as the landing page to your repository.
 You don't need it, but each repository should have one.
 The point of the README is to tell the reader what the repository is all about.
-As hinted by the file extension, the `README.md` is a markdown file.
+As hinted by the file extension, the ***README.md*** is a markdown file.
 Markdown is very simple to use - you just type and let your syntax take care of the formatting.
 See [this document from GitHub](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax) for an overview of how to use markdown.
 
@@ -73,48 +73,52 @@ At a minimum, start with these few items:
 - Repository structure
     - Tell the reader about the layout of the repository
         - What are your folder names, and what is contained in each folder
-        - What do the key files do e.g. I have a file in one of my projects called `student_missing-data-analysis.Rmd` with the description "notebook that explore the missingness present in the data as a whole, but particularly among students with PSU samples. It examines the effects of imputation on the GLM ORs"
+        - What do the key files do e.g. I have a file in one of my projects called ***student_missing-data-analysis.Rmd*** with the description "notebook that explore the missingness present in the data as a whole, but particularly among students with PSU samples. It examines the effects of imputation on the GLM ORs"
 - Built with
     - What are the key packages that you used in the project?
         - I often use the [`{targets}` package](https://books.ropensci.org/targets/) for automating R analysis pipelines and [`{renv}` package](https://rstudio.github.io/renv/) for R package management
 - Getting started
     - How to download the repository and get set up to run the analysis
     - Include the cloning commands
-    - Tell the reader what packages to install, and how (some packages you use may not be standard and you may need to use special instructions e.g., JAGS often requires installation from SourceForge)
+    - Tell the reader what packages to install, and how (some packages you use may not be standard and you may need to use special instructions e.g., `{JAGS}` often requires installation from SourceForge)
 - Usage
     - Tell the reader how to re-run your analysis
     - Hopefully this will be fairly simple if you clearly describe your repository structure above
     - Because I often use `{targets}` when I'm working in R, I like to add a quick description about how to use `{targets}`, specifically that it is based around the [functional programming concept](https://adv-r.hadley.nz/fp.html), so it is a little unfamiliar to people used to writing and using scripts
 - License
-    - This can be a link to your `LICENSE.txt` file
+    - This can be a link to your ***LICENSE.txt*** file
     - It is particularly important if your code is public-facing
 - Contact
 - Acknowledgements
 
 ### .gitignore
 
-The `.gitignore` file is a special "dot" file that stays in your project root and tells git to not track a file, or a group of files if you specify a folder or use the `*` wildcard.
+The ***.gitignore*** file is a special "dot" file that stays in your project root and tells Git to not track a file, or a group of files if you specify a folder or use the `*` wildcard.
 For example, we often do not want to html files as they are typically the outputs of our analysis e.g., rendered notebooks that we want to look at and share with collaborators.
-To exclude all html files, we simply add `*.html` to the `.gitignore`, and html files will stop being tracked.
-To exclude a folder, we would add `my-folder/` to the `.gitignore`.
+To exclude all html files, we simply add `*.html` to the ***.gitignore***, and html files will stop being tracked.
+To exclude a folder, we would add `my-folder/` to the ***.gitignore***.
 
-If you have multiple files with the same name, but in different folders within the project, e.g. `folder01/eda.Rmd` and `folder02/eda.Rmd`, you may only want to ignore one of them.
+If you have multiple files with the same name, but in different folders within the project, e.g. ***folder01/eda.Rmd*** and ***folder02/eda.Rmd***, you may only want to ignore one of them.
 In this situation, you should specify the path i.e., `folder02/eda.Rmd`.
-If you just add `eda.Rmd` to `.gitignore`, both files will be ignored.
+If you just add `eda.Rmd` to ***.gitignore***, both files will be ignored.
 
-As you can see in the [setup image](#creating-github-repo), GitHub provides optional templates for the `.gitignore`.
+As you can see in the [setup image](#creating-github-repo), GitHub provides optional templates for the ***.gitignore***.
 It's worth taking advantage of this and using the one for your language of choice e.g., R, python, Julia etc.
 It will provide you with a good starting point that you can customize as necessary.
 
-**Important to note - `.gitignore` will not remove files from the git history.**
+::: {.callout-warning}
 
-To do this, you would have to very carefully `cherry pick` and change past `commits`, particularly if you have already `pushed` your local changes to GitHub, and that is far beyond the scope of this workshop.
-So it's better to preemptively exclude a file or file type from git tracking if you think you might not want it in the git history later on e.g. put all sensitive data and outputs into folders that are ignored by git.
+***.gitignore*** will not remove files from the Git history.
+
+:::
+
+To do this, you would have to very carefully **cherry pick** and change past **commits**, particularly if you have already **pushed** your local changes to GitHub, and that is far beyond the scope of this workshop.
+So it's better to preemptively exclude a file or file type from Git tracking if you think you might not want it in the Git history later on e.g. put all sensitive data and outputs into folders that are ignored by Git.
 
 ### License
 
-Most people place their license in a `/LICENSE.txt` file and a state what license type you want to use e.g., MIT.
-Then in the `README.md`, you can just type in the location of the license e.g., `/LICENSE.txt`, and it will provide a link that readers can click on for the full details.
+Most people place their license in a ***/LICENSE.txt*** file and a state what license type you want to use e.g., MIT.
+Then in the ***README.md***, you can just type in the location of the license e.g., ***/LICENSE.txt***, and it will provide a link that readers can click on for the full details.
 You can use [this helpful website](https://choosealicense.com) to decide what license is appropriate for you and your project.
 
 ### Repository Template
@@ -125,33 +129,33 @@ Secondly, it's important to understand how to use GitHub before you try and auto
 
 Now we've got that out of the way, after you've created a repository with a structure you like (e.g., it has all of the components stated [above](#readme)), you can turn that into a template you can use for your next repository.
 To do so is very easy.
-Simply go to "Settings > General" and click on the "Template repository" button under your repository name.
+Simply go to *"Settings > General"* and click on the *"Template repository"* button under your repository name.
 
 ![](/figs/GitHub-new-repo_template.png)
 
 The next time you go to create a repository, your previous repo will show up in the templates drop-down for you to use and then edit.
-If you felt so inclined, you could even create a separate repository that is only for your template, so you don't have to go through and delete parts of the `README.md`.
+If you felt so inclined, you could even create a separate repository that is only for your template, so you don't have to go through and delete parts of the ***README.md***.
 
 ### Cloning to Your Local Computer
 
 Now comes the fun part - getting your project set up on your computer where you can do your work.
-Thankfully, GitHub makes this incredibly easy to do, particularly if you have a git client like GitKraken installed.
+Thankfully, GitHub makes this incredibly easy to do, particularly if you have a Git client like GitKraken installed.
 
-The first thing you need to do is create a local folder to `clone` your repository to.
+The first thing you need to do is create a local folder to **clone** your repository to.
 I like to have all of my repositories, work or otherwise, in one location on my computer, making it easy to find and switch between them.
-For example, I keep my repositories in `~/Documents/Repos/`, therefore the repository for this project is at `~/Documents/Repos/psu-intro-to-git`.
+For example, I keep my repositories in ***~/Documents/Repos/*** , therefore the repository for this project is at ***~/Documents/Repos/psu-intro-to-git***.
 Note that `~/` just means `/users/username/` on MacOS, which would translate to `/home/` on Linux, and `C:\Users\username\` on Windows. 
 
 It's not necessary to choose a directory name as the repository name on GitHub, but it's good practice and helps minimize confusion.
 
-If you have a git client, you can open it up, and assuming that it is connected to GitHub, there should be a "Clone button" you can click on.
-If you use GitKraken, pressing `cmd+N`/`ctrl+N` should bring up the clone window that looks like this below.
+If you have a Git client, you can open it up, and assuming that it is connected to GitHub, there should be a "Clone button" you can click on.
+If you use GitKraken, pressing **cmd+N**/**ctrl+N** should bring up the clone window that looks like this below.
 
 ![](figs/GitHub-new-repo_gitkraken-clone.png)
 
-If you have connected GitKraken to GitHub, you can search through your GitHub repositories, otherwise you can paste in the HTTPS or SSH urls in the "Clone with URL" section.
+If you have connected GitKraken to GitHub, you can search through your GitHub repositories, otherwise you can paste in the HTTPS or SSH urls in the *"Clone with URL"* section.
 
-To find your HTTPS/SSH urls, navigate to the repository, and click on the `< > Code` button, before selecting either HTTPS or SSH, depending on your [initial GitHub setup](./github-setup.qmd#linking-git-to-github).
+To find your HTTPS/SSH urls, navigate to the repository, and click on the *< > Code* button, before selecting either HTTPS or SSH, depending on your [initial GitHub setup](./github-setup.qmd#linking-git-to-github).
 These urls have a consistent pattern, so you don't always have to go to GitHub to find them.
 
 For HTTPS, they are `https://github.com/GITHUB_USERNAME/REPOSITORY_NAME.git`.
@@ -160,36 +164,36 @@ For SSH, they are `git@github.com:GITHUB_USERNAME/REPOSITORY_NAME.git`.
 
 ![](figs/GitHub-new-repo_clone-urls.png)
 
-If you do not have a git client, navigate to the directory where you would like to keep your repositories; for me, this is `~/Documents/Repos/`.
+If you do not have a Git client, navigate to the directory where you would like to keep your repositories; for me, this is ***~/Documents/Repos/***.
 Then open up the terminal/Git Bash command line in this location.
 From here you have two options.
 
-1. Create a folder for your repository (ideally use the same or a very similar name to the one on GitHub) and use the terminal command `git clone git@github.com:GITHUB_USERNAME/REPOSITORY_NAME.git .` (if you are using [SSH](./github-setup.qmd#linking-git-to-github)) from within this folder to clone the contents of the GitHub repository into this folder.
-2. Enter the command `git clone git@github.com:GITHUB_USERNAME/REPOSITORY_NAME.git` (if you are using [SSH](./github-setup.qmd#linking-git-to-github)) to create and clone the repository into `~/Documents/Repos/REPOSITORY_NAME` (note the lack of the `.` at the end of the command)
+1. Create a folder for your repository (ideally use the same or a very similar name to the one on GitHub) and use the terminal command `Git clone git@github.com:GITHUB_USERNAME/REPOSITORY_NAME.Git .` (if you are using [SSH](./github-setup.qmd#linking-git-to-github)) from within this folder to clone the contents of the GitHub repository into this folder.
+2. Enter the command `Git clone git@github.com:GITHUB_USERNAME/REPOSITORY_NAME.git` (if you are using [SSH](./github-setup.qmd#linking-git-to-github)) to create and clone the repository into ***~/Documents/Repos/REPOSITORY_NAME*** (note the lack of the `.` at the end of the command)
 
-That's it, you're ready to start using git!
+That's it, you're ready to start using Git!
 
 ## Local First
 
-Sometimes you already have code on your computer that you want to turn into a git project.
+Sometimes you already have code on your computer that you want to turn into a Git project.
 As mentioned, this is a pretty easy problem to solve.
-You will still need to go through the same repository structure steps and decisions as above, so I recommend [going back](#github-first) if you've just skipped ahead to here, but assuming you've already covered that material, the first thing you need to do is turn your local repository into a git repository.
+You will still need to go through the same repository structure steps and decisions as above, so I recommend [going back](#github-first) if you've just skipped ahead to here, but assuming you've already covered that material, the first thing you need to do is turn your local repository into a Git repository.
 
 ### Git Client
 
-If you have a git client installed, such as GitKraken, it's not too hard to turn an existing directory into a git repository, before `pushing` to GitHub.
-First, open GitKraken and enter `cmd+I`/`ctrl+I` to open up the "Init" window.
-From here, navigate to "Local Only", which tells GitKraken that you want to turn a directory local to your computer into a git repository.
-Ensure that your "Initalize in" Path is in the correct parent directory (for me, I keep my repositories in `~/Documents/Repos`).
-Now just enter the name of the directory you would like to turn into the repository and click "Create Repository".
+If you have a Git client installed, such as GitKraken, it's not too hard to turn an existing directory into a Git repository, before `pushing` to GitHub.
+First, open GitKraken and enter **cmd+I**/**ctrl+I** to open up the *"Init"* window.
+From here, navigate to *"Local Only"*, which tells GitKraken that you want to turn a directory local to your computer into a Git repository.
+Ensure that your "*Initalize in"* Path is in the correct parent directory (for me, I keep my repositories in ***`~/Documents/Repos`***).
+Now just enter the name of the directory you would like to turn into the repository and click *"Create Repository"*.
 
 ![](figs/GitHub-new-repo_local-gitkraken-init.png)
 
-This will not overwrite your file, just add the necessary git components and add the `.gitignore`, `LICENSE.md` (if selected), and a blank `README.md` (if you haven't already created one) as your first `commit`.
-All other files will be `added` (i.e., `git add .`), ready to be `staged` and `committed`, though we'll explain what this means in more detail shortly.
+This will not overwrite your file, just add the necessary Git components and add the ***.gitignore***, ***LICENSE.md*** (if selected), and a blank ***README.md*** (if you haven't already created one) as your first **commit**.
+All other files will be `added` (i.e., `git add .`), ready to be **staged** and **committed**, though we'll explain what this means in more detail shortly.
 
 From here, you need to connect your local repository to GitHub.
-In GitKraken, open up the repository (if it didn't open automatically after creating), and click on the sidebar button labelled "REMOTE".
+In GitKraken, open up the repository (if it didn't open automatically after creating), and click on the sidebar button labelled *"REMOTE"*.
 
 ![](figs/GitHub-new-repo_local-gitkraken-connect-remote.png)
 
@@ -200,17 +204,22 @@ From here:
 - Choose the repository name you'd like for GitHub (I'd recommend the default, which is your local repository's name)
 - Add a [quick description](#description)
 - Select the level of [visibility](#public-vs-private) you would like
-- **Note:** I would leave "Remote Name" as `origin` as lots of standard commands refer to `origin`, so it'll make your life easier if you have to troubleshoot things later on in your git adventures
+
+::: {.callout-note}
+
+I would leave *"Remote Name"* as **origin** as lots of standard commands refer to **origin**, so it'll make your life easier if you have to troubleshoot things later on in your Git adventures
+
+:::
 
 And that's it.
 
 ### No Git Client
 
-Firstly, go [install a git client](./git-client.qmd#installing-a-git-client) if you are learning git - you'll save yourself a lot of time and heartache when it comes to the day-to-day of using git.
+Firstly, go [install a Git client](./git-client.qmd#installing-a-git-client) if you are learning Git - you'll save yourself a lot of time and heartache when it comes to the day-to-day of using Git.
 But if you're insistent that you need to use the command line at this stage, or just are interested in understanding what commands your GUI is performing, carry on reading.
 
-From here, your code will vary slightly depending on whether you set up git using [SSH or PAT token](./github-setup.qmd#linking-git-to-github), but the structure is generally the same.
-If you already have code, you can ignore `echo ...` in step 2 as you have files git can track (though you should add a README.md!), and replace `README.md` with the file(s) you wish to track.
+From here, your code will vary slightly depending on whether you set up Git using [SSH or PAT token](./github-setup.qmd#linking-git-to-github), but the structure is generally the same.
+If you already have code, you can ignore `echo ...` in step 2 as you have files Git can track (though you should add a ***README.md***!), and replace ***README.md*** with the file(s) you wish to track.
 
 1. Open a terminal/Git Bash command line in your directory
     - All the following commands should be entered in the terminal from within the directory
@@ -218,21 +227,21 @@ If you already have code, you can ignore `echo ...` in step 2 as you have files 
     - Git will not track a completely empty directory, so you need to first add a file
     - `echo # PROJECT_NAME > README.md`
     - `git init`
-3. `add` and `commit` the `README.md` file to the git history so you have something to `push` to GitHub
+3. `add` and **commit** the ***README.md*** file to the Git history so you have something to **push** to GitHub
     - `git add README.md`
-        - Use `git add .` to track all the files in a repository with changes e.g. if you have existing code in a folder that you are converting into a git repository
+        - Use `git add .` to track all the files in a repository with changes e.g. if you have existing code in a folder that you are converting into a Git repository
     - `git commit -m "Initialize project with README"`
-4. Rename your default branch to `main`
+4. Rename your default branch to **main**
     - `git branch -M main`
 5. Connect your local repository to your GitHub repository
     - For PAT token setup
         - `git remote add origin https://github.com/arnold-c/psu-intro-to-git.git`
     - For SSH setup
         - `git remote add origin git@github.com:arnold-c/psu-intro-to-git.git`
-6. `push` your `commit` to GitHub
+6. **push** your **commit** to GitHub
     - `git push -u origin main`
 7. Navigate to GitHub, and edit the [visibility](#public-vs-private) of the repository if desired
     - By default, GitHub will publish the repository as public access
 
-If you already have a git repository on your local computer, but for some reason haven't connected it to a remote (e.g, GitHub) you can do so by following commands 4-7 inclusively.
+If you already have a Git repository on your local computer, but for some reason haven't connected it to a remote (e.g, GitHub) you can do so by following commands 4-7 inclusively.
 

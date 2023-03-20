@@ -2,11 +2,11 @@
 
 This book accompanies the Pennsylvania State University's Center for Infectious Disease Dynamics short workshop on using Git and GitHub as researchers.
 The content will mirror much of the workshop's syllabus, and act as a reference for attendees (and others), although I would highly recommend reading through the [excellent book](https://happygitwithr.com) by Jenny Bryan and co., as well as the [GitHub docs](https://docs.github.com/en) for more in-depth information.
-I also strongly recommend looking at the [Atlassian Git tutorials](https://www.atlassian.com/git/tutorials) for excellent in-depth tutorials about git, and [Learn Git Branching](https://learngitbranching.js.org) for an interactive way to learn git!
+I also strongly recommend looking at the [Atlassian Git tutorials](https://www.atlassian.com/git/tutorials) for excellent in-depth tutorials about Git, and [Learn Git Branching](https://learngitbranching.js.org) for an interactive way to learn Git!
 
 ## Motivation
 
-As mentioned above, there are plenty of great resources out there for learning git and GitHub.
+As mentioned above, there are plenty of great resources out there for learning Git and GitHub.
 So why write another one?
 Well, in part, I wanted to try and consolidate the information out there without a bias and focus on R and R-studio, which many of the more introductory resources do, and without getting too deep into the weeds like some of the resources aimed at software developers rather than busy researchers.
 
@@ -14,7 +14,7 @@ Well, in part, I wanted to try and consolidate the information out there without
 
 There are some pre-requisite tasks to get set up ahead of the workshop.
 
-1. What are git and GitHub, and why do I care?
+1. What are Git and GitHub, and why do I care?
 2. How to install Git
 3. Setting up a GitHub account
 4. Connecting GitHub to my machine
@@ -23,8 +23,34 @@ There are some pre-requisite tasks to get set up ahead of the workshop.
 
 After getting setup, the workshop will cover the following sections:
 
-1. An overview of how git works
-2. Making your first git repository
-3. Git mechanics - how to actually use git
+1. An overview of how Git works
+2. Making your first Git repository
+3. Git mechanics - how to actually use Git
 4. Git branching
 5. Recommended practices
+
+## Keywords, Code, and Other Formatting
+
+Throughout the book, you'll see some keywords, code, and other points that I'll try to delineate with the following formatting:
+
+::: {.callout-note}
+This will be a note, and will be used to highlight important points, or to provide additional information.
+:::
+
+::: {.callout-tip}
+This will be used to highlight a useful tip.
+:::
+
+::: {.callout-warning}
+
+This will provide a warning that you may get an unexpected result if you're not careful.
+
+:::
+
+- `code` will be used to highlight code.
+- `{package::function()}` will be used to denote a specific package and function, e.g., `{dplyr::mutate()}` denotes the `mutate()` function from the `{dplyr}` package.
+I will use this for all languages for consistency, even though some (like Python or Julia) don't use the `::` notation to export functions.
+- **keywords** will be used to highlight keywords and phrases, e.g., **Git** or **GitHub**.
+    - **actions** will also be highlighted in this way, e.g., **commits** or **pushed** being the result of the code `git commit` or `git push` 
+- ***files*** will be used to highlight file names, e.g., ***README.md*** or ***LICENSE***.
+- *italics* will be used for emphasis in certain circumstances, e.g., signifying a question from an interactive terminal command.
