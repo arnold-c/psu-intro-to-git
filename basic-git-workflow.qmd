@@ -347,3 +347,66 @@ The Git history on GitHub will show the relative time that the **commit** was ma
 :::
 
 
+## Collaborating on a Project
+
+Up until now, we've just been working on our own, but what if we want to collaborate with others on a project?
+There are a couple of ways we can do this, but the easiest is to add collaborators to our repository on GitHub.
+
+::: {.callout-note}
+
+Just for reference, you could set up a GitHub organization and then add collaborators to that, but that's a bit more complicated than what we're doing here.
+
+For open-source projects where you want to allow others to make suggestions for their contributions, without directly giving them access to the repository, you can use the "**fork** and **clone**" model, where people can **fork** the repository and then make a **pull request** to merge their changes into the original repository.
+This is far more complicated than what we're doing here, so we won't cover it, but you can learn more about it in Jenny Bryan's [Happy Git with R](https://happygitwithr.com/fork-and-clone.html) book chapter, the [Atlassian tutorial](https://www.atlassian.com/git/tutorials/setting-up-a-repository/git-clone), and/or the official [GitHub tutorial](https://docs.github.com/en/get-started/quickstart/contributing-to-projects) that demonstrates with a repository that you can practice on.
+
+:::
+
+We'll practice where you can add me as a collaborator to your SIR repository.
+
+First, go to *"Settings > Access > Collaborators"* on your repository on GitHub.
+
+![](./figs/Basic-workflow_collaborate01.png)
+
+You can see that there are no collaborators at the moment, but click on the "Add people" button to add me as a collaborator.
+From here, you can type in my GitHub username, `arnold-c`, and then click on the *"Add arnold-c to this repository"* button.
+
+From here, I'll make the following change to the ***README.md*** file under the "Built With" section.
+
+```markdown
+- [`{deSolve}`](https://cran.r-project.org/web/packages/deSolve/index.html) for solving differential equations
+```
+
+What you will notice is that when I make this change, it will be reflected in the Git history on GitHub, but not in your local repository.
+However, this will discrepancy will not immediately be apparent, as our computer hasn't checked in with GitHub to see if there are any changes since we last **pushed**.
+To do this, we will use the **fetch** command.
+
+::: {.callout-note}
+
+In this instance, I've just made the change myself directly in GitHub, which will have a similar effect to it being made by a collaborator.
+
+:::
+
+To **fetch** the changes, we can use the GitKraken interface.
+Clicking on the *"Pull"* button will bring up a menu, where we can select the *"Fetch All"* option.
+Once the changes have been **fetched**, we can see that there is a new **commit** in the Git history, and our **remote** branch is now ahead of our **local** branch.
+
+![](./figs/Basic-workflow_collaborate02.png)
+
+::: {.callout-note}
+
+In some cases, GitKraken will automatically **fetch** changes, but here's how you can do it manually (this is worth doing routinely if you're collaborating with others, just to be safe).
+
+:::
+
+**Pulling** the changes will bring our **local** branch up-to-date with the **remote** branch.
+The default **pull** behavior is to *"**fast-forward** if possible"*, which means that the **local** branch will be moved to the **commit** that the **remote** branch is pointing to.
+It does this by performing a **merge**.
+There are some instances (that we are unlikely to run into for a while) where this can cause issues, which is why there are options to *"fast-forward only"* and *"rebase"*.
+If you want to learn more, you can read about it [here](https://blog.sffc.xyz/post/185195398930/why-you-should-use-git-pull-ff-only) and [here](https://stackoverflow.com/questions/25430600/difference-between-git-pull-rebase-and-git-pull-ff-only).
+For the time-being, just stick with the default behavior and you'll be fine!
+
+::: {.callout-tip}
+
+When working on a collaborative project, get into the habit of **fetching** routinely to see if there are any changes that you need to **pull**. If you leave it too long, you might end up with a lot of changes to **pull** and it might be difficult to figure out what's going on. Even worse, you might end up making changes to old versions of the code, which will cause conflicts when you try and **pull**/**push**/**merge** the changes.
+
+:::
