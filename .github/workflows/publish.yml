@@ -20,6 +20,8 @@ jobs:
         #  tinytex: true
         #env:
         #  GH_TOKEN: ${{ secrets.QUARTO_PUBLISH_TOKEN }}
+      - name: Install TinyTex
+        run: quarto install tool tinytex
 
       #- name: Render Quarto Project
       #  uses: quarto-dev/quarto-actions/render@v2
