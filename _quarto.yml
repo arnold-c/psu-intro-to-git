@@ -39,6 +39,7 @@ format:
     code-fold: false
     code-overflow: wrap
   pdf:
+    pdf-engine: lualatex
     documentclass: scrreprt
 
 
