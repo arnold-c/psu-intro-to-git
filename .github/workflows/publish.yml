@@ -16,19 +16,14 @@ jobs:
 
       - name: Set up Quarto
         uses: quarto-dev/quarto-actions/setup@v2
-        with:
-          tinytex: true
-        env:
-          GH_TOKEN: ${{ secrets.QUARTO_PUBLISH_TOKEN }}
-      - name: Update TinyTex remote repository
-        run: tlmgr option repository ftp://tug.org/historic/systems/texlive/2023/tlnet-final
 
-      #- name: Render Quarto Project
-      #  uses: quarto-dev/quarto-actions/render@v2
+      - name: Render Quarto Project
+        uses: quarto-dev/quarto-actions/render@v2
+        to: html
           
       - name: Publish HTML book
         uses: quarto-dev/quarto-actions/publish@v2
         with:
           target: gh-pages
-          render: true
+          render: false
 
