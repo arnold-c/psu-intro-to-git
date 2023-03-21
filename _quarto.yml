@@ -14,7 +14,7 @@ book:
         - install-git.qmd
         - github-setup.qmd
         - git-client.qmd
-    - part: "Working with Git"
+    - part: "Working with Git Fundamentals"
       chapters:
         - how-git-works.qmd
         - making-your-first-repo.qmd

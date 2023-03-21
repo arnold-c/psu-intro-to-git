@@ -1,33 +1,42 @@
-# Welcome, and what this book is about {.unnumbered}
+# Welcome, and What This Book is About {.unnumbered}
 
 This book accompanies the Pennsylvania State University's Center for Infectious Disease Dynamics short workshop on using Git and GitHub as researchers.
-The content will mirror much of the workshop's syllabus, and act as a reference for attendees (and others), although I would highly recommend reading through the [excellent book](https://happygitwithr.com) by Jenny Bryan and co., as well as the [GitHub docs](https://docs.github.com/en) for more in-depth information.
+The content will form the basis of the workshop's syllabus, and act as a reference for attendees (and others), although I would highly recommend reading through the [excellent book](https://happygitwithr.com) by Jenny Bryan and co., as well as the [GitHub docs](https://docs.github.com/en) for additional information.
 I also strongly recommend looking at the [Atlassian Git tutorials](https://www.atlassian.com/git/tutorials) for excellent in-depth tutorials about Git, and [Learn Git Branching](https://learngitbranching.js.org) for an interactive way to learn Git!
 
 ## Motivation
 
 As mentioned above, there are plenty of great resources out there for learning Git and GitHub.
 So why write another one?
-Well, in part, I wanted to try and consolidate the information out there without a bias and focus on R and R-studio, which many of the more introductory resources do, and without getting too deep into the weeds like some of the resources aimed at software developers rather than busy researchers.
+Well, in part, I wanted to try and consolidate the information out there into a book that doesn't have a bias and focus on R and R-Studio tools, which many of the more introductory resources do, and without getting too deep into the weeds like some of the resources aimed at software developers rather than busy researchers.
 
-## Pre-requisites
+## Who Should Read This Book?
+
+This book is aimed at researchers who are interested in using Git and GitHub to manage their research projects, so really that should be everyone who does any computational work as part of their research!
+Because this book accompanies an introductory workshop, we will work from the fundamentals up, so you don't need to have any prior experience with Git or GitHub.
+
+However, that does not mean that this won't be of any use to you if you already know the basics.
+The plan of this book is to keep updating it with new content as I my own research and experience with Git and GitHub progresses, and as new tools are developed, with the latter half of the book including more advanced topics that can act as a reference for attendees to follow up on after the workshop, as well as a resource for more experienced users who come across this.
+
+In part, this latter section will be a place for me to keep track of the things I've learned, and to share them with others.
+As you use Git, you will inevitably put yourself in a position where you realized you've messed up and you need to try and back out of the situation you've created.
+I've been there, and will certainly experience this again, so I'll try and document the solutions I've found to these problems here.
+This second half of the book will also be where I outline more general research workflows that I've found useful, and how I've integrated them with Git and GitHub.
+Research project management is a large topic in its own right, so I won't be able to, and shouldn't, cover everything here, but if it relates to Git, it'll be included.
+
+## Workshop Pre-Requisites
 
 There are some pre-requisite tasks to get set up ahead of the workshop.
+Because we only have 2 hours, there is not enough time to go over the installation of Git and GitHub if we want to get to a point where we can understand and troubleshoot our way through actually using these tools, so you'll need to do that ahead of time.
+Please set aside about an hour to try and get this set up.
+I'm hoping that you should be able to do this in about 30 minutes, but as with all things computational, it's worth including some buffer time in case you run into issues.
+
+The pre-requisite sections cover the following topics and questions:
 
 1. What are Git and GitHub, and why do I care?
 2. How to install Git
 3. Setting up a GitHub account
 4. Connecting GitHub to my machine
-
-## TOC
-
-After getting setup, the workshop will cover the following sections:
-
-1. An overview of how Git works
-2. Making your first Git repository
-3. Git mechanics - how to actually use Git
-4. Git branching
-5. Recommended practices
 
 ## Keywords, Code, and Other Formatting
 
