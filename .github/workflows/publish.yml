@@ -27,3 +27,5 @@ jobs:
         with:
           target: gh-pages
           render: true
+        env:
+          GH_TOKEN: ${{ secrets.QUARTO_PUBLISH_TOKEN }}
