@@ -21,8 +21,6 @@ jobs:
 
       - name: Render Quarto Project
         uses: quarto-dev/quarto-actions/render@v2
-        with:
-          to: [html, pdf]
           
       - name: Publish HTML book
         uses: quarto-dev/quarto-actions/publish@v2
