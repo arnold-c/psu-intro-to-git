@@ -19,11 +19,11 @@ jobs:
         with:
           tinytex: true
 
-      - name: Render Quarto Project
-        uses: quarto-dev/quarto-actions/render@v2
+      #- name: Render Quarto Project
+      #  uses: quarto-dev/quarto-actions/render@v2
           
       - name: Publish HTML book
         uses: quarto-dev/quarto-actions/publish@v2
         with:
           target: gh-pages
-          render: false
+          render: true
