@@ -39,7 +39,7 @@ format:
     code-fold: false
     code-overflow: wrap
   pdf:
-    pdf-engine: lualatex
+    pdf-engine: xelatex
     documentclass: scrreprt
 
 

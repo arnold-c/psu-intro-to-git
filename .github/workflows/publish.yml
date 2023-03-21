@@ -16,13 +16,13 @@ jobs:
 
       - name: Set up Quarto
         uses: quarto-dev/quarto-actions/setup@v2
-
+        with:
+          tinytex: true
+          
       - name: Render Quarto Project
         uses: quarto-dev/quarto-actions/render@v2
-        with:
-          to: html
           
-      - name: Publish HTML book
+      - name: Publish HTML and PDF book
         uses: quarto-dev/quarto-actions/publish@v2
         with:
           target: gh-pages
