@@ -16,14 +16,11 @@ jobs:
 
       - name: Set up Quarto
         uses: quarto-dev/quarto-actions/setup@v2
-        #with:
-        #  tinytex: true
-        #env:
-        #  GH_TOKEN: ${{ secrets.QUARTO_PUBLISH_TOKEN }}
-      - name: Install TinyTex
-        run: |
-          quarto install tool tinytex
-          tlmgr option repository ftp://tug.org/historic/systems/texlive/2023/tlnet-final
+        with:
+          tinytex: true
+        env:
+          GH_TOKEN: ${{ secrets.QUARTO_PUBLISH_TOKEN }}
+        run: tlmgr option repository ftp://tug.org/historic/systems/texlive/2023/tlnet-final
 
       #- name: Render Quarto Project
       #  uses: quarto-dev/quarto-actions/render@v2
