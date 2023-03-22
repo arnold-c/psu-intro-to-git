@@ -17,7 +17,7 @@ This is useful for things like log files and html outputs, which are not part of
 
 So how does Git keep track of all these changes?
 It does so by creating **commits**.
-A **commit** is a snapshot of the changes in a repository at a given point in time.
+A **commit** is a snapshot of every file in a repository, along with its changes since the last snapshot, at a given point in time.
 You can think of it like saving a file in a word processor, and is an action that has to be done manually.
 We'll talk in more detail later about how to do this, but a key idea is to **commit** often, and **commit** early.
 

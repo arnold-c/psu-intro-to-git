@@ -11,7 +11,7 @@ Where tracked changes can get unwieldy after multiple iterations, Git makes it e
 In addition to just being able to understand a file history, when working on a project, even if you're the only one coding, it's important to be able to go back to previous versions if you make a mistake.
 This is possible with Git!
 In fact, this book was created using Git and GitHub, so you can explore how it was put together and iterated by going to the [GitHub page]().
-Git isn't the only VCS available, but it's the most prevalent, and has a good support community, so is what will be the focus in this book.
+Git isn't the only VCS available, but it's the most prevalent, has some advantages over the alternatives in the [method of storing its data](https://git-scm.com/book/en/v2/Getting-Started-What-is-Git%3F), and has a good support community, so is what will be the focus in this book.
 
 ## What is GitHub?
 

@@ -3,6 +3,7 @@
 This book accompanies the Pennsylvania State University's Center for Infectious Disease Dynamics short workshop on using Git and GitHub as researchers.
 The content will form the basis of the workshop's syllabus, and act as a reference for attendees (and others), although I would highly recommend reading through the [excellent book](https://happygitwithr.com) by Jenny Bryan and co., as well as the [GitHub docs](https://docs.github.com/en) for additional information.
 I also strongly recommend looking at the [Atlassian Git tutorials](https://www.atlassian.com/git/tutorials) for excellent in-depth tutorials about Git, and [Learn Git Branching](https://learngitbranching.js.org) for an interactive way to learn Git!
+As you become more familiar with Git, it's worth checkout out the [official Git documentation and book](https://git-scm.com/book/en/v2), which provides a wealth of information about Git and its internals.
 
 ## Motivation
 
