@@ -194,6 +194,69 @@ These are pretty self-explanatory, and easy to fill in now.
 Now we've added a bit more to the README, let's make another **commit**.
 The process is exactly the same as before, so nothing much to go through here.
 
+## Installing the Necessary Packages
+To run the code, we'll need to install a few packages.
+In both R and Python I'm using packages to manage the environments to try and make the code more reproducible.
+In R, this is the [`{renv}`](https://rstudio.github.io/renv/articles/renv.html) package, and in Python, this is the [`{poetry}`](https://python-poetry.org) package.
+
+If you use Python, you are likely already familiar with the `pip` package manager and the concept of virtual environments, and but R users may not be.
+This is too big of a topic to go into detail here, but the basic premise is that the package manager takes a snapshot of all the installed packages and their dependencies, along with their version numbers, and stores this information in a file called a *lockfile*.
+Doing this means that if someone **clones** your repository, and your repo has a *lockfile*, they can run just one command to install all of the packages that you used to run your code, and not worry about incompatible versions of packages being installed that would cause errors.
+
+Here, I've provided the *lockfiles* for both R and Python, so you can just run the commands below to install the packages.
+
+<details>
+  <summary>
+    R Code
+  </summary>
+  <p>
+
+Install the `{renv}` package if you don't already have it installed:
+
+```r
+install.packages("renv")
+```
+
+Copy the ***renv.lock*** file to the root of your repository.
+Then, run the following command in your R terminal:
+
+```r
+renv::restore()
+```
+
+  </p>
+</details>
+
+<details>
+  <summary>
+    Python Code
+  </summary>
+  <p>
+
+Install the `{poetry}` package if you don't already have it installed.
+How you do this will depend on your operating system, but you can find instructions [here](https://python-poetry.org/docs/#installation).
+Make sure the poetry package is available in your PATH by running the following command in your terminal:
+
+```bash
+poetry --version
+```
+
+Copy the ***poetry.lock*** and ***pyproject.toml*** files to the root of your repository.
+Then, run the following command in your terminal:
+
+```bash
+poetry install
+```
+
+::: {.callout-note}
+
+This code was developed in a pyenv virtual environment, using Python 3.11.0.
+
+:::
+
+  </p>
+</details>
+
 ## Adding Simulation Code
 
 Let's start writing our simulation.
@@ -202,10 +265,11 @@ We'll start by creating the ***src/*** folder, and then creating a new file call
 Copy the below code into that file.
 
 <details>
-<summary>
-  R Code
-</summary>
-<p>
+  <summary>
+    R Code
+  </summary>
+  <p>
+
 ```r
 library(deSolve)
 library(tidyverse)
@@ -253,7 +317,8 @@ ggplot(out_df, aes(x = time, y = number, color = state)) +
   geom_line(linewidth = 2) +
   labs(x = "Time", y = "Number", color = "State")
 ```
-</p>
+
+  </p>
 </details>
 
 <details>
@@ -261,6 +326,7 @@ ggplot(out_df, aes(x = time, y = number, color = state)) +
     Python Code
   </summary>
   <p>
+
 ```python
 import numpy as np
 import pandas as pd
@@ -315,6 +381,7 @@ theme_set(theme_minimal())
     + labs(x='Time', y='Number', color='State')
 )
 ```
+
   </p>
 </details>
 
@@ -338,6 +405,12 @@ Now we have some code, we can expand upon sections of the README.
 The first thing we can do is to add some text to the "Getting Started" section.
 I've used the `{renv}` package to manage the R environment for this project, so I'll add some text to the README to reflect that.
 
+<details>
+  <summary>
+    R Code
+  </summary>
+  <p>
+
 ```markdown
 I've used the `{renv}` package to manage the R environment for this project.
 For more details on how to use `{renv}`, see [this article](https://rstudio.github.io/renv/articles/renv.html), but in brief, it creates a snapshot of the installed packages and their versions.
@@ -350,6 +423,30 @@ The following text can be added to the "Usage" section.
 ```markdown
 To run the SIR model, you can open the ***src/sir_model.R*** file and run the code as usual.
 ```
+</p>
+</details>
+
+<details>
+  <summary>
+    Python Code
+  </summary>
+  <p>
+
+```markdown
+I've used the `{poetry}` package to manage the R environment for this project.
+For more details on how to use `{poetry}`, see [this page of the documentation](https://python-poetry.org/docs/basic-usage/), but in brief, it creates a snapshot of the installed packages and their versions.
+
+To get started, you will need to install `{poetry}` using system-dependent commands (see [the official documentation](https://python-poetry.org/docs/) for these commands), and then run `poetry install` to install the packages that are used in this project (the record in the ***poetry.lock*** file).
+```
+
+The following text can be added to the "Usage" section.
+
+```markdown
+To run the SIR model, you can open the ***src/sir_model.py*** file and run the code as usual.
+```
+
+  </p>
+</details>
 
 ### Amending the README Commit
 
@@ -359,10 +456,34 @@ Instead, we can **amend** the previous **commit** to include the changes we've m
 
 We want to add the following text to the "Built With" section of the README.
 
+<details>
+  <summary>
+    R Code
+  </summary>
+  <p>
+
 ```markdown
 - [R version 4.2.1 (2022-06-23)](https://cran.r-project.org/bin/macosx/)
 - [`{renv}`](https://rstudio.github.io/renv/articles/renv.html) for package management
 ```
+
+  </p>
+</details>
+
+<details>
+  <summary>
+    Python Code
+  </summary>
+  <p>
+
+```markdown
+- [Python version 3.11.0](https://www.python.org/downloads/)
+- [`{poetry}`](https://python-poetry.org/docs/) for package management
+```
+
+  </p>
+</details>
+
 
 ::: {.callout-warning}
 
