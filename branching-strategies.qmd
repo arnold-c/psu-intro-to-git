@@ -42,8 +42,13 @@ Now we're ready to start adding code.
 
 ### Adding Code
 
-Add the following R code to the end of the `sir_model.R` file:
+Add the following R code to the end of the ***sir_model.R*** / ***sir_model.py*** file:
 
+<details>
+  <summary>
+    R Code
+  </summary>
+  <p>
 ```r
 # Candidate values for R0 and beta
 R0 <- seq(0.1, 5, length = 50)
@@ -73,6 +78,37 @@ ggplot(final_size_df, aes(x = R0, y = final_size)) +
   geom_line(linewidth = 2) +
   labs(x = "R0", y = "Final size")
 ```
+  </p>
+</details>
+
+<details>
+  <summary>
+    Python Code
+  </summary>
+  <p>
+```python
+# Candidate values for R0 and beta
+R0 = np.linspace(0.1, 5, 50)
+betas = R0 * 1 / 2
+
+solve_ivp(
+    sirmod, [tmin, 1e5], start, args=parms
+).y[2, -1]
+
+final_size_df = pd.DataFrame({"R0": R0, "final_size": np.zeros(len(R0))})
+
+for (index, beta) in enumerate(betas):
+    p = (beta, mu, gamma, N)
+    final_size_df.final_size[index] = solve_ivp(sirmod, [tmin, 1e5], start, args=p).y[2, -1]
+
+(
+    ggplot(final_size_df, aes(x='R0', y='final_size'))
+    + geom_line(size=2)
+    + labs(x='R0', y='Final size')
+)
+```
+  </p>
+</details>
 
 After **staging** and **committing** the changes, we'll see that our **final-size-calc** branch is now ahead of the **main** branch by one **commit**.
 We'll also notice that **final-size-calc** only exists locally, and not on the **remote** repository.
