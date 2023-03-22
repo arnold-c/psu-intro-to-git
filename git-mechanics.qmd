@@ -16,6 +16,7 @@ As you get more advanced, you'll want to explore them in a little more detail.
             margin-top: 10px;
             margin-bottom: 10px;">
 - [**add**](#add)
+- [**stage**](#stage)
 - [**commit**](#commit)
 - [**diff**](#diff)
 - [**amend**](#amend)
@@ -53,6 +54,10 @@ As you get more advanced, you'll want to explore them in a little more detail.
 - <span id="add">**add**</span>: this takes all of the changes you have made to a file/set of files, and **stages** them, so they are ready to be committed
     - This is essential, as it allows you to work as you normally would, but save your changes in small chunks for more descriptive **commits** that are easier to understand and review.
     - `git add .` stages all files that have been modified, but you can specify specific files by explicitly naming them.
+- <span id="stage">**stage**</span>: *this is the process of preparing a change/set of changes to be **committed**.
+    - Think of it as putting a piece of code in a folder, ready to be saved.
+    - You can **stage** as many changes as you like, including lines of code (AKA **hunks**) rather than whole files, and then **commit** them all at once.
+    - If you have made changes to multiple files without writing any **commits**, you might not want to include all these changes in a single **commit** as the changes might be unrelated, or just too big to be useful so would be better served by splitting up into multiple distinct **commits**. **Staging** allows you to only prepare a subset of your changes for **committing**.
 - <span id="commit">**commit**</span>: this standings for *committing* a change to your file in Git.
     - Think of it as saving a document, but instead of saving the whole document as-is, Git saves just the changes since the last version. This makes it very efficient, especially when it comes to backing up your work.
 
