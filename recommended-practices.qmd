@@ -1,1 +1,33 @@
 # Recommended Practices
+
+Congratulations for making it this far!
+You've learned enough to be able to start using Git and GitHub in your research workflow.
+This section will summarize the lessons learned so far and package them into a set of recommended practices.
+
+- If you can, create your project on GitHub before **cloning** to your **local** machine
+    - Use GitKraken to do this as it will take care of **cloning** the repository for you
+    - Make sure you initialize the project with a ***README***, ***.gitignore***, and ***LICENSE***
+- Add the default text to the ***README*** file
+    - Create a blank repository on GitHub that contains the outlined ***README.md***, ***.gitignore***, and ***LICENSE*** files so you can use this as a template for future projects
+    - This will be crucial for others to understand what your project is about, as well as future you!
+- **Commit** often and **commit** early
+    - Provide descriptive **commit** messages so you can quickly understand what you did when reading the Git history
+    - It's better to have too many **commits** than too few
+        - You can always **squash** them later
+- Make sure your **commits** relate to specific and distinct code changes
+    - This makes it easier to understand what you did and why you did it, as well as reverting changes if necessary
+    - You can **stage** files line-by-line if necessary to ensure you are only **committing** the changes that are related to the goal of the **commit** and described in the **commit** message
+- Make use of `git amend` to facilitate frequent **commits**
+    - This will allow you to develop quickly and then decide what you want to keep in the **commit** later
+    - Not every change needs to be a separate **commit**, so repeatedly **amending** to the previous **commit** is a good way to prototype an idea without cluttering the Git history or risking losing your work
+- Create **short-lived feature branches** for each new feature
+    - This will keep your **main** production branch clean and working for your collaborators, provide a clear descriptive structure to your development, and make it easier to roll back changes if necessary, without concern of breaking working code on the **main** branch
+- Use **pull requests** to merge your **feature branches** into the **main** branch
+    - This will allow you to get feedback from your collaborators before merging your changes into the **main** branch
+    - It's necessary to get experience with **pull requests** as they are a common way to contribute to open source projects
+    - Delete your **feature branches** after merging them into the **main** branch
+- Use [**GitHub issues**](https://docs.github.com/en/issues/tracking-your-work-with-issues/about-issues) to track bugs and feature requests
+    - We haven't covered this, but it's a good idea to get familiar with this feature and the documentation and general ideas are easy to understand
+    - This will allow you to keep a self-contained project, rather than having to try and link to external issues in a different system
+    - Learn how to reference issues in your **commit** messages and **pull requests** to automatically close issues when feature branches are **merged** after completion
+- Routinely update the ***README.md*** file to ensure it is up to date with the current state of the project
