@@ -5,6 +5,16 @@ We'll start completely from scratch, and work our way up to a full-fledged Git r
 
 I find that the best way to learn anything is to actually do it on a real project, as it's hard to conceptualize what's going on when you're just reading about it, or even working through a toy example.
 And because we research infectious diseases in CIDD, we'll build up a repository that contains a notebook for an SIR model (Susceptible-Infected-Removed), and do it in both Python and R as that should allow most people to follow along with the code in a language they're familiar with.
+Look for the following drop-down sections to reveal the simulation code you need.
+
+<details><summary>R Code</summary></details>
+<details><summary>Python Code</summary></details>
+
+Throughout this section, we'll be demonstrating the workflow using GitKraken, but the same principles apply to the command line.
+In fact, below each section that highlights a GitKraken feature, I've included a drop-down section that shows the equivalent command line commands.
+Just look for the following drop-down sections to reveal the commands.
+
+<details><summary>Terminal Commands</summary></details>
 
 ## Creating a New Repository
 
@@ -23,6 +33,28 @@ So, in summary:
 6. Click *"Clone"* and wait for the repository to be cloned to your computer
 
 The repo should now be cloned to your computer, and you should be able to see it in the *"Open a repo"* section of GitKraken, which you can access using **cmd+O**/**ctrl+O**.
+
+<details>
+<summary>Terminal Commands</summary>
+  <p>
+
+```bash
+# Make the directory to store all your Git repos
+# -p flag will create the directory and any parent directories that don't exist, but not overwrite anything
+mkdir -p ~/Documents/Repos
+
+# Change into the directory
+cd ~/Documents/Repos
+
+# Clone the repository
+git@github.com:GITHUB_USERNAME/sir-model.git
+
+# Change into the repository
+cd sir-model
+```
+
+  </p>
+</details>
 
 ## Giving Our Repository Some Structure
 
@@ -100,7 +132,7 @@ We'll do that later after we've added a few more things to the README.
 So for now, let's continue to flesh out the README.
 
 <details>
-<summary>Terminal commands</summary>
+<summary>Terminal Commands</summary>
   <p>
 
 ```bash
@@ -531,6 +563,55 @@ Equally, if we look at the **diff** of this **commit**, we can see that our **am
 
 ![](./figs/Basic-workflow_amend03.png)
 
+<details>
+<summary>Terminal Commands</summary>
+  <p>
+
+```bash
+# Check and stage changes
+git status -vv
+git add .
+
+# Amend changes
+git commit --amend
+
+# Examine the Git history and find the commit ID for the commit you want to diff
+# --oneline: show each commit on a single line, rather than the default multi-line format which shows the commit message and other details
+# --graph: show a graphical representation of the Git history, which is useful when you have branches and merges
+# --decorate: show the names of all references (branches, tags, etc.) that point to the commit
+# --all: show the Git history for all branches
+git log --oneline --graph --decorate --all
+
+# Diff the commit (replace with your commit ID)
+git diff 0de4674
+```
+
+::: {.callout-note}
+
+If you do not specify the **commit ID**, the **diff** of the most recent **commit** will be shown.
+
+:::
+
+::: {.callout-warning}
+
+If you try to **diff** a **commit** that is particularly long i.e., has a lot of line changes, you will enter a special interactive mode that is based on Vim.
+There are a number of commands you'll need to know.
+
+- `d`: scroll the page down
+- `u`: scroll the page up
+- `j`: move the cursor down one line
+- `k`: move the cursor up one line
+- `q`: quit the interactive mode and return to the terminal
+
+To see a cheat sheet with more Vim commands, see [here](https://devhints.io/vim).
+
+:::
+
+See [here](https://stackoverflow.com/questions/1057564/pretty-git-branch-graphs) for some git aliases that can make your git log prettier.
+
+  </p>
+</details>
+
 ## Our First Push
 
 Now that we've made some substantial changes to the repository, we can **push** them to GitHub.
@@ -556,6 +637,17 @@ The Git history on GitHub will show the relative time that the **commit** was ma
 
 :::
 
+<details>
+<summary>Terminal Commands</summary>
+  <p>
+
+```bash
+# Push changes
+git push
+```
+
+  </p>
+</details>
 
 ## Collaborating on a Project
 
@@ -620,3 +712,18 @@ For the time-being, just stick with the default behavior and you'll be fine!
 When working on a collaborative project, get into the habit of **fetching** routinely to see if there are any changes that you need to **pull**. If you leave it too long, you might end up with a lot of changes to **pull** and it might be difficult to figure out what's going on. Even worse, you might end up making changes to old versions of the code, which will cause conflicts when you try and **pull**/**push**/**merge** the changes.
 
 :::
+
+<details>
+<summary>Terminal Commands</summary>
+  <p>
+
+```bash
+# Fetch changes
+git fetch
+
+# Pull changes
+git pull
+```
+
+  </p>
+</details>
