@@ -40,6 +40,20 @@ This also shows that both **branches** are currently at the same **commit**, as 
 
 Now we're ready to start adding code.
 
+<details>
+  <summary>Terminal Commands</summary>
+  <p>
+
+```bash
+# checkout changes the branch
+# -b creates a new branch with the given name
+git checkout -b final-size-calc
+```
+
+  </p>
+</details>
+
+
 ### Adding Code
 
 Add the following R code to the end of the ***sir_model.R*** / ***sir_model.py*** file:
@@ -125,6 +139,28 @@ Click *"Submit"* with the default to avoid any confusion that may be caused by u
 
 We'll now see that both our **local** machine and GitHub are pointing to the same **commit** for the **final-size-calc** branch.
 
+<details>
+  <summary>Terminal Commands</summary>
+  <p>
+
+```bash
+# Stage and commit the changes
+git add .
+git commit -m "Add final size calculation code"
+
+# Show git tree
+git log --graph --decorate --oneline --all
+
+# Push the commit to the remote repository
+# -u sets the upstream branch to the remote branch of the same name
+# origin is the name of your remote (the default name)
+# final-size-calc is the name of the local branch you want to push
+git push -u origin final-size-calc
+```
+
+  </p>
+</details>
+
 ### Merging the Branch
 
 Now we've added code and **pushed** it to GitHub, we can keep going and add more code to the **final-size-calc** branch.
@@ -193,3 +229,18 @@ If we now right click on the **final-size-calc local branch**, we can delete it 
 We will now see the updated Git history.
 
 ![](./figs/Basic-workflow_branch09.png)
+
+<details>
+  <summary>Terminal Commands</summary>
+  <p>
+
+```bash
+# Delete the remote branch
+git push -d origin final-size-calc
+
+# Delete the local branch
+git branch -d final-size-calc
+```
+
+  </p>
+</details>
