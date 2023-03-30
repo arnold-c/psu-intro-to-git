@@ -74,6 +74,16 @@ As you get more advanced, you'll want to explore them in a little more detail.
     - This is useful when you forget to include something in a **commit**, i.e., it is a small change that belongs in the most recent **commit** and is not a substantial piece of work, even if the two are related
     - You never want to try to **amend** if your most recent **commit** has been **pushed** to the **remote**. You end up in a situation where collaborators might have already **pulled** your work so they are now out-of-sync with your rewritten git history, therefore git will not allow you to **push** these changes.
         - In this situation, just create a new **commit**!
+
+::: {.callout-note}
+
+Technically, you actually **amend** the **commit** at the **HEAD**.
+Given that the **HEAD** is the most recent **commit** by default, this is something you shouldn't need to worry about for now.
+However, this distinction is important when it comes to [**interactive rebases**](#rebase-i).
+You can see [this document](https://github.com/jesseduffield/lazygit/wiki/Interactive-Rebasing#step-2-1) for more information about **interactive rebases**, which highlights visually where the **HEAD** is in relation to the **commit** you are **amending**.
+
+:::
+
 - <span id="fetch">**fetch**</span>: checks the status of your **remote** and compares it to the version on your local machine, telling you if you are out of date i.e., need to **pull**
 - <span id="pull">**pull**</span>: this command copies the version of the code from your remote to your local machine.
     - Use this when you want to get the most up-to-date version of your code to work on (assuming your local version isn't the most up-to-date)
