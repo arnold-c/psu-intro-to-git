@@ -2,7 +2,8 @@
 
 In this section, we'll put together the basic Git workflow, and show how all these many terms and commands actually fit together.
 We'll start completely from scratch, and work our way up to a full-fledged Git repository.
-I find that this is the best way to learn anything is to actually do it on a real project, as it's hard to conceptualize what's going on when you're just reading about it, or even working through a toy example.
+
+I find that the best way to learn anything is to actually do it on a real project, as it's hard to conceptualize what's going on when you're just reading about it, or even working through a toy example.
 And because we research infectious diseases in CIDD, we'll build up a repository that contains a notebook for an SIR model (Susceptible-Infected-Removed), and do it in both Python and R as that should allow most people to follow along with the code in a language they're familiar with.
 
 ## Creating a New Repository
@@ -97,6 +98,25 @@ We'll do that later after we've added a few more things to the README.
 ![](figs/Basic-workflow_first-commit-changes04.png)
 
 So for now, let's continue to flesh out the README.
+
+<details>
+<summary>Terminal commands</summary>
+  <p>
+
+```bash
+# Check what files have been changed
+# -vv flag will show where the files have changed and display the diff
+git status -vv
+
+# Stage all changes
+git add .
+
+# Commit changes
+git commit -m "Add structure to README" -m "Added structure to the README to outline the points that need to be expanded upon. As a license was generated on repo creation, I have linked to this in the README"
+```
+
+  </p>
+</details>
 
 ### About This Project
 
