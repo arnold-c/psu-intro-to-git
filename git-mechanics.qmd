@@ -7,14 +7,7 @@ As you get more advanced, you'll want to explore them in a little more detail.
 
 ### Core Commands
 
-<div style="background: ghostwhite; 
-            border-radius: 5px;
-            padding: 10px; 
-            border: 1px solid lightgray; 
-            margin-left: 0px;
-            margin-right: 0px;
-            margin-top: 10px;
-            margin-bottom: 10px;">
+<div class="box">
 - [**add**](#add)
 - [**stage**](#stage)
 - [**commit**](#commit)
@@ -30,14 +23,7 @@ As you get more advanced, you'll want to explore them in a little more detail.
 </div>
 
 ### Useful to Know About
-<div style="background: ghostwhite; 
-            border-radius: 5px;
-            padding: 10px; 
-            border: 1px solid lightgray; 
-            margin-left: 0px;
-            margin-right: 0px;
-            margin-top: 10px;
-            margin-bottom: 10px;">
+<div class="box">
 - [**revert**](#revert)
 - [**reset**](#reset)
 - [**rebase**](#rebase)
