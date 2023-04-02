@@ -1,0 +1,27 @@
+# Deleting Branches
+
+As described earlier, you should be using short-lived feature branches, which means that you will be deleting branches quite often.
+Sometimes, you will end up getting some error messages when you go through the process outlined [here](branching-strategies.qmd#cleaning-up-our-repository).
+
+This page will help you navigate some of the errors you might encounter.
+
+## Fatal Reference
+
+```bash
+fatal: couldn't find remote ref refs/heads/branch-name
+```
+
+Sometimes you will delete a branch from both the remote and local repositories, but you will get an error message when you later try to pull or push to the remote repository.
+For Git to connect local and remote branches, it uses references that are stored in a number of files.
+The first place to check is in the ***.git/config*** file.
+If you see a reference to the branch you deleted, you can remove it from the file.
+
+```bash
+cat .git/config
+
+>   ...
+    [branch "old-branch-name"]
+            remote = origin
+            merge = refs/heads/old-branch-name
+    ...
+```
