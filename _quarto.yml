@@ -22,6 +22,9 @@ book:
         - basic-git-workflow.qmd
         - branching-strategies.qmd
         - recommended-practices.qmd
+    - part: "Troubleshooting Examples"
+      chapters:
+        - deleting-branches.qmd
     - references.qmd
   repo-url: https://github.com/arnold-c/psu-intro-to-git
   repo-actions: [edit]
@@ -35,8 +38,8 @@ bibliography: references.bib
 format:
   html:
     theme:
-      light: [cosmo, _light.scss]
-      dark: [cosmo, _dark.scss]
+      light: [cosmo, format/_light.scss]
+      dark: [cosmo, format/_dark.scss]
     code-copy: true
     code-fold: false
     code-overflow: wrap
