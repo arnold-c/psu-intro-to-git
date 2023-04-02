@@ -10,6 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
+      deployments: write
     steps:
       - name: Check out repository
         uses: actions/checkout@v3
@@ -21,10 +22,13 @@ jobs:
           
       - name: Render Quarto Project
         uses: quarto-dev/quarto-actions/render@v2
-          
-      - name: Publish HTML and PDF book
-        uses: quarto-dev/quarto-actions/publish@v2
+      
+      - name: Publish
+        uses: cloudflare/pages-action@1
         with:
-          target: gh-pages
-          render: false
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          projectName: psu-intro-to-git
+          directory: '_book'
+          gitHubToken: ${{ secrets.GITHUB_TOKEN }}
 
