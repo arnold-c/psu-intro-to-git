@@ -1,0 +1,14 @@
+# Miscellaneous
+
+This section contains miscellaneous troubleshooting information that does not have a natural home elsewhere, at the moment.
+
+## Partial Push
+
+Sometimes you make a lot of **commits** locally that you haven't pushed to the **remote**.
+If this happens, occasionally, you may want to push only a subset of the commits to the **remote**.
+This could be because you're not sure that all of the commits are complete enough to be shared, and you may want to edit them later on.
+It could also be that you tried a regular push, but it failed, and pushing only a subset of the commits is a way to troubleshoot the problem.
+
+```bash
+git push origin commit-id:branch-name
+```
