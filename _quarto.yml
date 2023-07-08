@@ -33,6 +33,7 @@ book:
   sidebar:
     search: true
     border: true
+  google-analytics: "G-EVYBCCRZHE"
 
 bibliography: references.bib
 
