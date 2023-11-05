@@ -1,0 +1,6 @@
+## Merge Conflicts
+
+When collaborating with others, or even just working on multiple features at once, you will inevitably come across a merge conflict.
+This section of the document will try to guide you through why this might happen, and how to resolve it.
+
+### The Workflow

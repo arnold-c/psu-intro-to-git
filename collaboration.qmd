@@ -45,6 +45,7 @@ Once you have your new **local** branch created, you should push it so there is 
 At this point, you're ready to update your code.
 
 Below is code that updates the simulation files (*simulation.R* and *simulation.py*).
+Go ahead and update your code and then **commit** and **push** your changes to your remote repository.
 
 
 <details>
@@ -232,3 +233,61 @@ for index, beta in enumerate(betas):
 
 </p>
 </details>
+
+Now that you've updated the model structure, **committed** the changes, and **pushed** your changes to GitHub, you will also want to update the ***README.md*** file to indicate to readers the model that you are using.
+
+### Checking for Collaborator's Updates
+
+At the same time you're working on updating the model structure, one of your collaborators has decided to help you out and update the ***README.md*** file for the change you're working on.
+If all goes well, and you're not working on the same lines of the same file at the same time, you should be fine.
+In this case, the only thing to do is to regularly check GitHub for any changes that have been made to the project since you last **pushed** changes.
+Imagine the ***README.md*** file looks like this:
+
+<details>
+    <summary>README.md</summary>
+
+````markdown
+## SEIR Model
+### About This Project
+
+This is a test project to get used to using Git and GitHub.
+
+The purpose of this project is to create a SIR model in R.
+An SEIR model is a model that describes the spread of a disease in a population, placing individuals in compartments based on their infection status.
+The compartments are susceptible (S), exposed (E), infected (I), and recovered (R).
+The model is described by the following equations:
+
+```math
+\begin{align}
+\frac{dS}{dt} &= \mu (N - S) -\beta S \frac{I}{N} \\
+\frac{dE}{dt} &= \beta S \frac{I}{N} - \sigma E \\
+\frac{dI}{dt} &= \sigma E - \gamma I - \mu I \\
+\frac{dR}{dt} &= \gamma I - \mu R
+\end{align}
+```
+
+```math
+\begin{align}
+\mu &= \frac{1}{50*52} \\
+\beta &= 2 \\
+\sigma &= 1 \\
+\gamma &= \frac{1}{2} \\\\
+
+N &= 1.0 \\
+S_0 &= 0.999 \\
+E_0 &= 0 \\
+I_0 &= 0.001 \\
+R_0 &= 0.0
+\end{align}
+```
+
+Here, $\mu$ is the mortality and birth rate, $\beta$ is the contact rate multiplied by the per-contact transmission probability, $\sigma$ is the latent rate, and $\gamma$ is the recovery rate.
+The units for this are weeks, so the life expectancy is 50 years, and the duration of infection (inverse of recovery rate) is 2 weeks.
+````
+
+</details>
+
+If you haven't made changes to the ***README.md***, pulling the changes won't cause any problems.
+Once you have finalized you changes, **push** them to GitHub and create a **pull request**, as we did in the [branching chapter](./branching-strategies.qmd).
+If you have both made changes to the same lines of code, you will get a **merge conflict** as Git doesn't known which change to keep.
+This can be resolved, but we will demonstrate that in the [troubleshooting examples](./merge-conflicts.qmd) using a slightly different example where there are multiple branches changing the same lines of code, but the concept is exactly the same.
