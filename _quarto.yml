@@ -21,10 +21,12 @@ book:
         - git-mechanics.qmd
         - basic-git-workflow.qmd
         - branching-strategies.qmd
+        - collaboration.qmd
         - recommended-practices.qmd
     - part: "Troubleshooting Examples"
       chapters:
         - deleting-branches.qmd
+        - merge-conflicts.qmd
         - misc-troubleshooting.qmd
     - references.qmd
   repo-url: https://github.com/arnold-c/psu-intro-to-git

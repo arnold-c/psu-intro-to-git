@@ -80,7 +80,7 @@ final_size_df <- map2_dfr(
       func = sirmod,
       parms = c(mu = 0, N = 1, beta = .x, gamma = 1/2)
     )
-    
+
     tibble(
       R0 = .y,
       final_size = equil$y["R"]
