@@ -26,8 +26,8 @@ book:
     - part: "Troubleshooting Examples"
       chapters:
         - deleting-branches.qmd
-        - merge-conflicts.qmd
         - misc-troubleshooting.qmd
+    - todo.qmd
     - references.qmd
   repo-url: https://github.com/arnold-c/psu-intro-to-git
   repo-actions: [edit]

@@ -1,0 +1,26 @@
+# TODOs
+
+This is a list of topics I want to cover when I get the time.
+They will generally be more advanced, as most of the basics should be covered by now.
+If you have any suggestions, please let me know.
+
+- [ ] Moving away from GitKraken
+    - [ ] LazyGit TUI
+    - [ ] GitHub CLI
+    - [ ] Integrating Git into NeoVim
+    - I want to show alternative, faster, and importantly, free ways to interact with Git.
+    GitKraken is a great tool, but learning to use the terminal and command line clients allows for faster interaction with Git.
+    GitKraken is also only free while you are a student and have the GitHub student development plan.
+- [ ] `git stash`
+- [ ] `git squash`
+- [ ] `git rebase -i`
+    - Interactive rebases are incredibly powerful mechanisms to correct past mistakes and conflicts, but they introduce many more advanced concepts.
+- [ ] `git cherry-pick`
+    - Cherry picking commits is useful when you accidentally start work on the wrong branch and want to move it across to the correct feature branch.
+- [ ] `git bisect`
+    - When a bug is introduced and discovered at a later time, and you need to find what commit caused the issue, `git bisect` can be useful.
+- [ ] Alternative branching strategies
+    - [ ] **tags** and **releases**
+    - [ ] GitHub actions
+    - Sometimes it is useful to have a long running **dev** branch that is developed against (i.e., feature branches come off the **dev** branch), and **dev** is merged into the **main** branch for releases, usually coinciding with automated GitHub action tests.
+    For science, a release could be when a block of work has been completed that represents the initial paper submission, and subsequent submissions/updates reflect different **releases**
