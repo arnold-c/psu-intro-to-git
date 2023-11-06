@@ -430,6 +430,10 @@ Now, your collaborator can **push** the corrected code to GitHub and create a pu
 
 ![Pull request to end the rebase](./figs/Collaboration_rebase-05.png)
 
+::: {.callout-tip}
+To learn more about Git **rebase**, I would strongly recommend watching [this short video](https://www.youtube.com/watch?v=zOnwgxiC0OA&list=PLfU9XN7w4tFwKwh_xPSQ_X1-hROQEpHnM&index=1) by The Modern Coder, which does an amazing job of explaining the difference between **merge** and **rebase** and why one may be an advantage over the other in certain contexts.
+:::
+
 ### Local Merge & PR
 
 This process is identical to the **rebase** method, except that you use **merge** instead of **rebase**.

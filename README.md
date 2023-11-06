@@ -41,6 +41,7 @@ This book stands on the shoulders of giants, most notably:
 -  [The Atlassian Git tutorials](https://www.atlassian.com/git/tutorials)
 -  [Learn Git Branching](https://learngitbranching.js.org) for an interactive way to learn Git!
 -  [The official Git documentation and book](https://git-scm.com/book/en/v2), which provides a wealth of information about Git and its internals.
+- [These amazing videos and Git explanations](https://www.youtube.com/playlist?list=PLfU9XN7w4tFwKwh_xPSQ_X1-hROQEpHnM) by the YouTuber "The Modern Coder"
 
 All of these, and miscellaneous other resources and blog posts, have been invaluable in my own learning of Git and GitHub, and I hope that this book can be similarly useful to others.
 
