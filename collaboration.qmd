@@ -371,7 +371,7 @@ So how does our collaborator resolve this issue?
 
 ![New feature branch is based of an out of date main branch](./figs/Collaboration_multiple-features-03.png)
 
-There are a number of methods to do this, but I'll just outline three common methods here.
+There are a number of methods to do this, but I'll just outline the common methods you may see here.
 
 ### Carry On as Usual & PR
 
@@ -434,10 +434,29 @@ Now, your collaborator can **push** the corrected code to GitHub and create a pu
 To learn more about Git **rebase**, I would strongly recommend watching [this short video](https://www.youtube.com/watch?v=zOnwgxiC0OA&list=PLfU9XN7w4tFwKwh_xPSQ_X1-hROQEpHnM&index=1) by The Modern Coder, which does an amazing job of explaining the difference between **merge** and **rebase** and why one may be an advantage over the other in certain contexts.
 :::
 
+### Local Merge
+
+First, **checkout** the feature branch, ensure your **main** branch is up to date, and then right click on **main** and select "merge feature branch into main".
+As before, you will be prompted to resolve the conflicts, and after doing so, can **push** the changes to GitHub where **main** will be updated.
+
+::: {.callout-warning}
+If you are using **merge**, you should be careful about merging your changes into the **main** branch as this should represent the correct version of the code.
+For this reason, it is often advised that you apply [branch protection rules](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches/about-protected-branches) to the **main** branch to prevent accidental changes to the **main** branch that are not complete features.
+If you do this you will no longer be able to **push** directly to the **main** branch, so the **merge** method will not work, and will instead need to create a pull request.
+This has the added benefit of allowing your collaborators to review the changes before they are merged into the **main** branch.
+:::
+
 ### Local Merge & PR
 
+There is a second **merge** method - instead of merging **feature branch** into **main**, you can merge **main** into **feature branch**.
 This process is identical to the **rebase** method, except that you use **merge** instead of **rebase**.
-If you are unsure how to **merge** branches locally, have a read through the [merging section](./branching-strategies.qmd) of the branching strategies page section.
+This has the advantage (relative to the other **merge** method) that you can **push** directly to the **feature branch** without needing worry about branch protection rules stopping your **push**.
+And relative to the rebase method, it doesn't copy and reapply the commits you have made, so you are not altering the Git history, making it safer when multiple individuals may be working on the same feature branch simultaneously.
+However, it has the disadvantage that it produces more merge commits, so your Git history is a little messier than with the rebase method, so you will need to decide how much that matters to you (probably shouldn't be much).
+
+First, checkout the **main** branch this time, ensure your **main** branch is up to date, and then right click on the **feature branch** and select "merge main into feature branch".
+As before, **checkout** the feature branch where you will be prompted to resolve the conflicts, and after doing so, can **push** the changes to GitHub where **feature branch** will be updated.
+Finally, create a pull request to merge back into the **main** branch.
 
 ### Pull Directly into the Branch
 
