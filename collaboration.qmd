@@ -33,16 +33,21 @@ You can also create a GitHub issue from directly within GitKraken if you are sig
 :::
 
 Once you have created the issue, you will see an option on the right side that suggests you "Create a branch", under the "Development" heading.
-You can use this, or you can open up GitKraken and do the same thing there as GitKraken will take care of connecting the new local branch to your GitHub repository, so that's what we'll do.
+You can use this (I would recommend this approach as I find it a bit cleaner - it only requires a **fetch** and **checkout** to get working on it), or you can open up GitKraken and do the same thing there as GitKraken will create a local branch that you can get working in straight away.
+I'm demonstrating this way just in case you come across this feature and it doesn't seem to connect the two as you'd expect (as it did for me, which is why the two screenshots refer to different issues).
 Opening up your repository, you will see in the sidebar a heading "GitHub Issues".
 Clicking on that will reveal your issues, and upon selecting the correct one you will see an option to create a feature branch.
 
-![Creating an issue branch in GitKraken](./figs/Collaboration_issue-branch.png)
+![Creating an issue branch in GitKraken](./figs/Collaboration_issue-branch-01.png)
 
 Going through the next steps, you can name your branch whatever you like (though I tend to leave the default suggestion as they're not hanging around for long), and which branch you want to use for the base.
 If you're following the short-lived branch strategy, your base should probably be the **main** branch, an no others should be around for long enough that extra features can be branches off of them.
 Once you have your new **local** branch created, you should push it so there is a copy on your **remote** repository.
+There is just one final thing you need to do - connect your branch to your issue.
+Clicking on the "Development" heading of the issue will provide you with a menu to search all your repositories and then your branches that you can choose to link with the issue.
 At this point, you're ready to update your code.
+
+![Linking your branch to your issue in GitHub](./figs/Collaboration_issue-branch-02.png)
 
 Below is code that updates the simulation files (*simulation.R* and *simulation.py*).
 Go ahead and update your code and then **commit** and **push** your changes to your remote repository.
@@ -61,7 +66,7 @@ library(rootSolve)
 
 theme_set(theme_minimal())
 
-sirmod <- function(t, y, parms) {
+seirmod <- function(t, y, parms) {
   # Pull state variables from y vector
   S <- y[1]
   E <- y[2]
@@ -91,7 +96,7 @@ times <- seq(0, 26, by = 1 / 10)
 parms <- c(mu = 0, N = 1, beta = 2, sigma = 1, gamma = 1 / 2)
 start <- c(S = 0.999, E = 0.0, I = 0.001, R = 0)
 
-out <- ode(y = start, times = times, func = sirmod, parms = parms)
+out <- ode(y = start, times = times, func = seirmod, parms = parms)
 out_df <- as_tibble(out) %>%
   pivot_longer(cols = -time, names_to = "state", values_to = "number") %>%
   mutate(
@@ -119,7 +124,7 @@ final_size_df <- map2_dfr(
     equil <- runsteady(
       y = c(S = 1 - 1E-5, E = 0.0, I = 1E-5, R = 0),
       times = c(0, 1E5),
-      func = sirmod,
+      func = seirmod,
       parms = c(mu = 0, N = 1, beta = .x, sigma = 1, gamma = 1 / 2)
     )
 
@@ -152,7 +157,7 @@ from plotnine import *
 
 
 # %%
-def sirmod(t, y, beta, mu, sigma, gamma, N):
+def seirmod(t, y, beta, mu, sigma, gamma, N):
     # Unpack states
     S, E, I, R = y
 
@@ -186,7 +191,7 @@ R0 = 0
 start = (S0, E0, I0, R0)
 
 # %%
-out = solve_ivp(sirmod, [tmin, tmax], np.array(start), args=parms, t_eval=times)
+out = solve_ivp(seirmod, [tmin, tmax], np.array(start), args=parms, t_eval=times)
 
 # %%
 out_df = (
@@ -212,14 +217,14 @@ R0 = np.linspace(0.1, 5, 50)
 betas = R0 * 1 / 2
 
 # %%
-solve_ivp(sirmod, [tmin, 1e5], start, args=parms).y[2, -1]
+solve_ivp(seirmod, [tmin, 1e5], start, args=parms).y[2, -1]
 
 # %%
 final_size_df = pd.DataFrame({"R0": R0, "final_size": np.zeros(len(R0))})
 
 for index, beta in enumerate(betas):
     p = (beta, mu, sigma, gamma, N)
-    final_size_df.final_size[index] = solve_ivp(sirmod, [tmin, 1e5], start, args=p).y[
+    final_size_df.final_size[index] = solve_ivp(seirmod, [tmin, 1e5], start, args=p).y[
         2, -1
     ]
 
@@ -236,7 +241,7 @@ for index, beta in enumerate(betas):
 
 Now that you've updated the model structure, **committed** the changes, and **pushed** your changes to GitHub, you will also want to update the ***README.md*** file to indicate to readers the model that you are using.
 
-### Checking for Collaborator's Updates
+## Collaborating on the Same Feature
 
 At the same time you're working on updating the model structure, one of your collaborators has decided to help you out and update the ***README.md*** file for the change you're working on.
 If all goes well, and you're not working on the same lines of the same file at the same time, you should be fine.
@@ -252,7 +257,7 @@ Imagine the ***README.md*** file looks like this:
 
 This is a test project to get used to using Git and GitHub.
 
-The purpose of this project is to create a SIR model in R.
+The purpose of this project is to create a SEIR model in R.
 An SEIR model is a model that describes the spread of a disease in a population, placing individuals in compartments based on their infection status.
 The compartments are susceptible (S), exposed (E), infected (I), and recovered (R).
 The model is described by the following equations:
@@ -291,3 +296,90 @@ If you haven't made changes to the ***README.md***, pulling the changes won't ca
 Once you have finalized you changes, **push** them to GitHub and create a **pull request**, as we did in the [branching chapter](./branching-strategies.qmd).
 If you have both made changes to the same lines of code, you will get a **merge conflict** as Git doesn't known which change to keep.
 This can be resolved, but we will demonstrate that in the [troubleshooting examples](./merge-conflicts.qmd) using a slightly different example where there are multiple branches changing the same lines of code, but the concept is exactly the same.
+
+## Collaborating on Different Features
+
+More often than someone working on the same feature as you at the same time, you will split up the tasks between individuals.
+You may be working on updating the model to use the SEIR structure, and your collaborator will be working on a different feature, for example, editing the ***README.md*** file to be more descriptive about the model - it is a frequency dependent model as we are scaling the transmission terms by $N$.
+
+::: {.callout-note}
+You don't need to follow along with this, but you are welcome to, to get a sense of how to deal with potential merge conflicts.
+:::
+
+To do this, I'm first going to create a GitHub issue for the new change we want to make.
+This is simply going to be an issue with the "documentation" label that states the need to distinguish the model as frequency dependent in the ***README.md*** file.
+Then, I'm going to create a new branch for the feature we want to work on.
+However, before I create a new branch, I'm going to **checkout** the main branch, which is the one that contains the code we want to work on (your collaborator would not be creating a new branch off your short-lived branch).
+
+![Creating a new feature branch off main](./figs/Collaboration_multiple-features-01.png)
+
+Once this branch has been created, you should see in GitKraken that your new feature branch exists in the same state as your **main** branch.
+
+Now let's imagine our collaborator steps away from their computer for a while before they get a chance to modify the ***README.md*** file to indicate that we are working on a frequency dependent model.
+
+Their changes might look like this:
+
+<details>
+    <summary>README.md</summary>
+<p>
+
+````markdown
+## sir model
+### about this project
+
+this is a test project to get used to using git and github.
+
+the purpose of this project is to create a frequency dependent sir model in r.
+an sir model is a model that describes the spread of a disease in a population, placing individuals in compartments based on their infection status.
+the compartments are susceptible (s), infected (i), and recovered (r).
+the model is described by the following equations:
+
+```math
+\begin{align}
+\frac{ds}{dt} &= \mu (n - s) -\beta s \frac{i}{n} \\
+\frac{di}{dt} &= \beta s \frac{i}{n} - \gamma i - \mu i \\
+\frac{dr}{dt} &= \gamma i - \mu r
+\end{align}
+```
+
+```math
+\begin{align}
+\mu &= \frac{1}{50*52} \\
+\beta &= 2 \\
+\gamma &= \frac{1}{2} \\\\
+
+n &= 1.0 \\
+s_0 &= 0.999 \\
+i_0 &= 0.001 \\
+r_0 &= 0.0
+\end{align}
+```
+
+here, $\mu$ is the mortality and birth rate, $\beta$ is the contact rate multiplied by the per-contact transmission probability, and $\gamma$ is the recovery rate.
+the units for this are weeks, so the life expectancy is 50 years, and the duration of infection (inverse of recovery rate) is 2 weeks.
+````
+</p>
+</details>
+
+Any time multiple people are working on a project and numerous features are being worked on, there is the potential for conflicts when the same file is edited simultaneously and Git doesn't know which is the "correct" version.
+To try and avoid that problem, our collaborator should be regularly checking to see if we have made changes to files they are working on (in this case the ***README.md*** file).
+Because we've committed and pushed regularly, they see we have changed the file and will want to pull down the changes into their branch.
+And given we're working in a short-lived branch, we will have just completed our changes and submitted them as a pull request, but the issue here is that the base of our collaborator's branch is now out of date - it refers to before you implemented that changes to model structure and ***README.md***.
+So how does our collaborator resolve this issue?
+
+![Ignore the merge pull request messages - that is from automatically updating package dependencies](./figs/Collaboration_multiple-features-02.png)
+
+![New feature branch is based of an out of date main branch](./figs/Collaboration_multiple-features-03.png)
+
+There are a number of methods to do this, but I'll just outline two common methods here.
+
+### Carry On as Usual
+
+In this strategy, your collaborator doesn't need to do anything different.
+They will simply finish their changes, **push** to their feature branch on GitHub, and then create a pull request to merge back into the **main** branch.
+
+
+### Pull Directly into The Branch
+
+This is quite a nice and clean method to resolve conflicts.
+The first thing your coworker needs to do is to **checkout** the **main** branch to get it up to date on their computer.
