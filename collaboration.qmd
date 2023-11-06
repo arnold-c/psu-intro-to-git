@@ -371,15 +371,99 @@ So how does our collaborator resolve this issue?
 
 ![New feature branch is based of an out of date main branch](./figs/Collaboration_multiple-features-03.png)
 
-There are a number of methods to do this, but I'll just outline two common methods here.
+There are a number of methods to do this, but I'll just outline three common methods here.
 
-### Carry On as Usual
+### Carry On as Usual & PR
 
 In this strategy, your collaborator doesn't need to do anything different.
 They will simply finish their changes, **push** to their feature branch on GitHub, and then create a pull request to merge back into the **main** branch.
+Doing this, they will be faced with a merge conflict on trying to complete the pull request.
+They can go ahead and create the PR, but they will have to resolve the conflicts before they can be merged into the **main** branch.
 
+![Pull request warning](./figs/Collaboration_pr-conflict-01.png)
 
-### Pull Directly into The Branch
+![PR creation directs you the conflicts](./figs/Collaboration_pr-conflict-02.png)
+
+Clicking on the "Resolve conflicts" button will bring up an online editor that will allow them to select the correct version of the code for each conflicting line.
+The sections that conflict will be between:
+
+```markdown
+<<<< feature-branch
+...
+=======
+...
+>>>> main
+```
+
+![GitHub Pull request conflict editor](./figs/Collaboration_pr-conflict-03.png)
+
+After deleting the incorrect code and surrounding braces, the collaborator can just click on the "Mark as Resolved" button in the top right corner (not shown above) to save this update to the file (often there is more than one file that needs to be corrected), and then click on "Commit merge".
+
+### Rebase & PR
+
+This method requires that your collaborator first updates their **main** branch to the most recent version that is on the **remote**.
+From here, there ensure they are checked out on their **feature branch**.
+Right clicking on **main** will bring up a menu that has the option "Rebase feature branch onto main".
+
+![Rebase feature branch onto main](./figs/Collaboration_rebase-01.png)
+
+This will try to perform a **rebase**, and will fail due to a conflict, which it will ask your collaborator to resolve.
+The conflict can be fixed in GitKraken, or in a regular editor.
+
+![Rebase conflict warning](./figs/Collaboration_rebase-02.png)
+
+![Rebase conflict editor](./figs/Collaboration_rebase-03.png)
+
+As you can see, the way **rebase** works is a little different than **merge**.
+Instead of creating a new commit to join the branches, **rebase** copies the commits made on the feature branch and then tries to sequentially apply then to your base branch (in this case, the **main** branch).
+As a result, after the **rebase** has been successfully completed, the base of the feature branch has been shifted up the Git tree.
+To visualize this, take a close look at where the feature branch joins **main** in the before and after (below) images.
+
+![Rebase shifts the feature branch up](./figs/Collaboration_rebase-04.png)
+
+::: {.callout-warning}
+Because **rebase** creates a copy of your commits to reapply (it doesn't just move them), your commit history is technically different and changed.
+For this reason, you should be careful about rebasing when someone else has already checkout out the feature branch, as you will be altering Git history and no longer pointing to the same commits (even though the code is identical between the original and the copy **rebase** creates).
+:::
+
+Now, your collaborator can **push** the corrected code to GitHub and create a pull request to merge back into the **main** branch.
+
+![Pull request to end the rebase](./figs/Collaboration_rebase-05.png)
+
+### Local Merge & PR
+
+This process is identical to the **rebase** method, except that you use **merge** instead of **rebase**.
+If you are unsure how to **merge** branches locally, have a read through the [merging section](./branching-strategies.qmd) of the branching strategies page section.
+
+### Pull Directly into the Branch
 
 This is quite a nice and clean method to resolve conflicts.
-The first thing your coworker needs to do is to **checkout** the **main** branch to get it up to date on their computer.
+The only thing your coworker needs to do is to use the following command in the terminal (assuming they have already checked out the feature branch):
+
+```bash
+git pull origin main
+```
+
+This will result in exactly the same process as the PR version above, but this time it is within the **local** branch, so your collaborator can edit the files directly in the code editor rather than GitHub.
+It might also show `HEAD` instead of the feature branch name.
+
+```markdown
+<<<< HEAD
+...
+=======
+...
+>>>> main
+```
+
+::: {.callout-tip}
+If you get a warning about `hint: You have divergent branches and need to specify how to reconcile them`, you might need to look into either using the flag `--ff-only` or `--no-ff`.
+:::
+
+Here, it is also possible to view the conflict (and edit it) in GitKraken.
+It looks like this:
+
+![GitKraken merge conflict](./figs/Collaboration_pull-conflict-01.png)
+
+![GitKraken conflict editor](./figs/Collaboration_pull-conflict-02.png)
+
+Similar to the **rebase** method, your collaborator can then **push** the corrected code to GitHub and create a pull request to merge back into the **main** branch.
